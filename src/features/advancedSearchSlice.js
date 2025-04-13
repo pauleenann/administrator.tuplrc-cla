@@ -23,7 +23,7 @@ export const fetchAdvancedSearchResources = createAsyncThunk(
             queryParams.append('selectedType', selectedType);
 
 
-            const response = await axios.get(`https://api2.tuplrc-cla.com/api/advanced-search?${queryParams.toString()}`);
+            const response = await axios.get(`http://localhost:3001/api/advanced-search?${queryParams.toString()}`);
 
             return response.data
         } catch (error) {

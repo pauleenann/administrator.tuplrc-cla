@@ -51,7 +51,7 @@ const EditPatron = () => {
     const getUsername = async()=>{
         try {
           // Request server to verify the JWT token
-          const response = await axios.get(`https://api2.tuplrc-cla.com/api/user/check-session`, { withCredentials: true });
+          const response = await axios.get(`http://localhost:3001/api/user/check-session`, { withCredentials: true });
           console.log(response.data)
           // If session is valid, set the role
           if (response.data.loggedIn) {
@@ -70,7 +70,7 @@ const EditPatron = () => {
 
     const getColleges = async()=>{
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/college').then(res=>res.data);
+            const response = await axios.get('http://localhost:3001/api/data/college').then(res=>res.data);
             console.log(response)
             setColleges(response)
         } catch (err) {
@@ -80,7 +80,7 @@ const EditPatron = () => {
 
     const getCourses = async()=>{
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/course').then(res=>res.data);
+            const response = await axios.get('http://localhost:3001/api/data/course').then(res=>res.data);
             console.log(response)
             setCourses(response);
             setFilteredCourses(response);
@@ -92,7 +92,7 @@ const EditPatron = () => {
     const getPatronEdit = async () => {
         setIsLoading(true);
         try {
-            const res = await axios.get(`https://api2.tuplrc-cla.com/api/patron/update/${id}`);
+            const res = await axios.get(`http://localhost:3001/api/patron/update/${id}`);
     
             const fetchedData = {
                 patron_fname: res.data.patronData.patron_fname,
@@ -109,7 +109,7 @@ const EditPatron = () => {
             };
     
             // Fetch username before updating patron data
-            const userResponse = await axios.get(`https://api2.tuplrc-cla.com/api/user/check-session`, { withCredentials: true });
+            const userResponse = await axios.get(`http://localhost:3001/api/user/check-session`, { withCredentials: true });
             if (userResponse.data.loggedIn) {
                 fetchedData.username = userResponse.data.username;
                 setUserName(userResponse.data.username);
@@ -210,7 +210,7 @@ const EditPatron = () => {
                 } else {
                     if(!editMode){
                        try {
-                            const response = await axios.post('https://api2.tuplrc-cla.com/api/validate-tup-id', { tup_id: value });
+                            const response = await axios.post('http://localhost:3001/api/validate-tup-id', { tup_id: value });
                             if (response.data.exists) {
                                 error = response.data.message || 'TUP ID already exists.';
                             }
@@ -367,7 +367,7 @@ const EditPatron = () => {
             return
         }
         try {
-            await axios.post(`https://api2.tuplrc-cla.com/api/patron`, patronData);
+            await axios.post(`http://localhost:3001/api/patron`, patronData);
             navigate('/patron'); // Redirect after saving
             window.toast.fire({icon:"success", title:"Patron Added"})
         } catch (error) {
@@ -386,7 +386,7 @@ const EditPatron = () => {
                 category: patronData.category === 'None' ? '' : patronData.category,
             };
     
-            await axios.put(`https://api2.tuplrc-cla.com/api/patron/update/${id}`, updatedData);
+            await axios.put(`http://localhost:3001/api/patron/update/${id}`, updatedData);
             console.log('Patron updated successfully');
             navigate('/patron'); // Redirect after saving
             window.toast.fire({icon:"success", title:"Patron Updated"})

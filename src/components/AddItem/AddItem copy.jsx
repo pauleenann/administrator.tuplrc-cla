@@ -44,7 +44,7 @@ const AddItem = () => {
     const getUsername = async()=>{
         try {
           // Request server to verify the JWT token
-          const response = await axios.get('https://api2.tuplrc-cla.com/api/user/check-session', { withCredentials: true });
+          const response = await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
           console.log(response.data)
           // If session is valid, set the role
           if (response.data.loggedIn) {
@@ -150,7 +150,7 @@ const AddItem = () => {
     const viewResourceOnline = async()=>{
         console.log('view resource')
         try{
-            const response = await axios.get(`https://api2.tuplrc-cla.com/api/resources/${id}`);
+            const response = await axios.get(`http://localhost:3001/api/resources/${id}`);
            
             const data = response.data[0]
             const mediaType = data.type_id.toString();
@@ -400,7 +400,7 @@ const AddItem = () => {
                 }
             );
                 console.log(formData)
-                const response = await axios.post('https://api2.tuplrc-cla.com/api/resources', formData);
+                const response = await axios.post('http://localhost:3001/api/resources', formData);
                 console.log(response)
                  // close loading
                  setLoading(false)
@@ -457,7 +457,7 @@ const AddItem = () => {
                 Object.entries(bookData).forEach(([key, value]) => {
                     formData.append(key, value);  
                 });
-                const response = await axios.put(`https://api2.tuplrc-cla.com/api/resources/${id}`, formData);
+                const response = await axios.put(`http://localhost:3001/api/resources/${id}`, formData);
                 setLoading(false)
                 if(response.data.status==201){
                     navigate('/catalog')
@@ -487,7 +487,7 @@ const AddItem = () => {
         console.log('publishers online')
         const pubs = [];
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/publishers');
+            const response = await axios.get('http://localhost:3001/api/data/publishers');
             console.log(response.data)
             response.data.forEach(item => {
                 pubs.push({
@@ -504,7 +504,7 @@ const AddItem = () => {
     const getAuthors = async () => {
         const auth = [];
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/authors');
+            const response = await axios.get('http://localhost:3001/api/data/authors');
             response.data.forEach(item => {
                 auth.push({
                     value: `${item.author_fname} ${item.author_lname}`,
@@ -520,7 +520,7 @@ const AddItem = () => {
     const getAdvisers = async () => {
         const adv = [];
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/advisers');
+            const response = await axios.get('http://localhost:3001/api/data/advisers');
             response.data.forEach(item => {
                 adv.push({
                     value: `${item.adviser_fname} ${item.adviser_lname}`,
@@ -535,7 +535,7 @@ const AddItem = () => {
     // fetch resourceType ( book, journal, newsletter, thesis)
     const getType = async()=>{
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/type').then(res=>res.data);
+            const response = await axios.get('http://localhost:3001/api/data/type').then(res=>res.data);
             //console.log(response)
             setResourceType(response)
         } catch (err) {
@@ -545,7 +545,7 @@ const AddItem = () => {
     // fetch status (available,lost,damaged)
     const getStatus = async()=>{
         try {
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/status').then(res=>res.data);
+            const response = await axios.get('http://localhost:3001/api/data/status').then(res=>res.data);
             //console.log(response)
             setResourceStatus(response)
         } catch (err) {

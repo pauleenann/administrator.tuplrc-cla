@@ -100,7 +100,7 @@ const PatronImport = ({open, close}) => {
     const getColleges = async() => {
         try {
             setIsLoading(true);
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/college').then(res => res.data);
+            const response = await axios.get('http://localhost:3001/api/data/college').then(res => res.data);
             setColleges(response);
             if (response.length > 0) {
                 setImportData(prevData => ({
@@ -118,7 +118,7 @@ const PatronImport = ({open, close}) => {
     const getCourses = async() => {
         try {
             setIsLoading(true);
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/course').then(res => res.data);
+            const response = await axios.get('http://localhost:3001/api/data/course').then(res => res.data);
             setCourses(response);
             setFilteredCourses(response);
             if (response.length > 0) {
@@ -158,7 +158,7 @@ const PatronImport = ({open, close}) => {
         try {
             setIsLoading(true);
             // Send the data to the server
-            await axios.post('https://api2.tuplrc-cla.com/api/patron/import', {
+            await axios.post('http://localhost:3001/api/patron/import', {
                 patrons: importData.file,
                 collegeId: importData.college,
                 courseId: importData.course

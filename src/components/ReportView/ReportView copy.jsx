@@ -34,7 +34,7 @@ const ReportView = ({open, close, id}) => {
   
   const getReport = async() => {
     try {
-        const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/${id}`);
+        const response = await axios.get(`http://localhost:3001/api/reports/${id}`);
         console.log(response.data);
         
         // Convert dates to local timezone in the report data
@@ -63,7 +63,7 @@ const ReportView = ({open, close, id}) => {
     try {
       const reportParams = { ...report[0] };
       
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/generate-report`, {
+      const response = await axios.get(`http://localhost:3001/api/reports/generate-report`, {
         params: reportParams, // Sending report as query params
       });
       console.log(response);

@@ -153,7 +153,7 @@ const Catalog = () => {
         // Use keyword as is, or convert empty string to '%%' for backend wildcard search
         const searchKeyword = keyword === '' ? '%%' : keyword;
            
-        const response = await axios.get(`https://api2.tuplrc-cla.com/api/catalog`, {
+        const response = await axios.get(`http://localhost:3001/api/catalog`, {
           params: {
             keyword: searchKeyword,
             type: selectedFilters.type,
@@ -243,7 +243,7 @@ const Catalog = () => {
   // fetch resourceType ( book, journal, newsletter, thesis)
   const getType = async () => {
     try {
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/data/type').then(res => res.data);
+      const response = await axios.get('http://localhost:3001/api/data/type').then(res => res.data);
       //console.log(response)
       setType(response)
     } catch (err) {
@@ -254,7 +254,7 @@ const Catalog = () => {
   //get existing department online
   const getDept = async () => {
     try {
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/data/departments').then(res => res.data)
+      const response = await axios.get('http://localhost:3001/api/data/departments').then(res => res.data)
       setDepartment(response)
     } catch (err) {
       console.log("Couldn't retrieve department online. An error occurred: ", err.message)
@@ -264,7 +264,7 @@ const Catalog = () => {
   //get existing topics online
   const getTopics = async () => {
     try {
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/data/topic').then(res => res.data)
+      const response = await axios.get('http://localhost:3001/api/data/topic').then(res => res.data)
       setTopic(response)
     } catch (err) {
       console.log("Couldn't retrieve topics online. An error occurred: ", err.message)
@@ -344,7 +344,7 @@ const Catalog = () => {
       for (const resource of resources) {
         try {
           // Sync the resource
-          const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/resources', resource);
+          const response = await axios.post('http://localhost:3001/api/sync/resources', resource);
           if (response.data.status === 409) {
             alert(response.data.message);
             continue; // Skip the resource if there's a conflict
@@ -429,7 +429,7 @@ const Catalog = () => {
   const syncAdviserOnline = async (adviser, resourceId) => {
     try {
       console.log('syncing advisers')
-      const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/adviser', { adviser, resourceId });
+      const response = await axios.post('http://localhost:3001/api/sync/adviser', { adviser, resourceId });
       console.log(`Synced adviser: ${adviser.adviser_id}`, response.data);
 
     } catch (error) {
@@ -442,7 +442,7 @@ const Catalog = () => {
     try {
       for (const author of authors) {
         try {
-          const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/authors', { author, resourceId });
+          const response = await axios.post('http://localhost:3001/api/sync/authors', { author, resourceId });
           console.log(`Synced author: ${author.author_id}`, response.data);
         } catch (error) {
           console.error(`Failed to sync author: ${author.author_id}`, error.message);
@@ -457,7 +457,7 @@ const Catalog = () => {
   // Sync publisher
   const syncPublisherOnline = async (publisher) => {
     try {
-      const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/publisher', publisher);
+      const response = await axios.post('http://localhost:3001/api/sync/publisher', publisher);
       const { pub_id } = response.data;
       console.log('Publisher synced successfully with ID:', pub_id);
       return pub_id
@@ -481,7 +481,7 @@ const Catalog = () => {
       formData.append('pubId', pubId);
 
       // Send the FormData to the backend
-      const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/book', formData, {
+      const response = await axios.post('http://localhost:3001/api/sync/book', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -504,7 +504,7 @@ const Catalog = () => {
       formData.append('resourceId', resourceId);
 
       // Send the FormData to the backend
-      const response = await axios.post('https://api2.tuplrc-cla.com/api/sync/journalnewsletter', formData, {
+      const response = await axios.post('http://localhost:3001/api/sync/journalnewsletter', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -564,7 +564,7 @@ const Catalog = () => {
     if (!result.isConfirmed) return; // Exit if user cancels
 
     try {
-      await axios.post(`https://api2.tuplrc-cla.com/api/catalog`,{id,resourceState,username});
+      await axios.post(`http://localhost:3001/api/catalog`,{id,resourceState,username});
       // Show toast first
       window.toast.fire({ 
         icon: "success", 

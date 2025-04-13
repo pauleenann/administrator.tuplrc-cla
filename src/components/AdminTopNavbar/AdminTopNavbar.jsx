@@ -44,7 +44,7 @@ const AdminTopNavbar = () => {
     useEffect(() => {
         const getUsername = async () => {
             try {
-                const response = await axios.get('https://api2.tuplrc-cla.com/api/user/check-session', { withCredentials: true });
+                const response = await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
                 console.log(response.data);
                 if (response.data.loggedIn) {
                     setUname(response.data.username);
@@ -98,7 +98,7 @@ const AdminTopNavbar = () => {
     // Logout function remains the same
     const logout = async () => {
         try {
-            await axios.post('https://api2.tuplrc-cla.com/api/user/logout', { username: uname }, { withCredentials: true });
+            await axios.post('http://localhost:3001/api/user/logout', { username: uname }, { withCredentials: true });
             localStorage.removeItem('role');
             localStorage.removeItem('username');
             navigate('/');

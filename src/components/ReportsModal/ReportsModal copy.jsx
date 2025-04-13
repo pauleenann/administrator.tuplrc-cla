@@ -92,7 +92,7 @@ const ReportsModal = ({ open, close, onReportCreate }) => {
 
   const getCategories = async () => {
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/categories`);
+      const response = await axios.get(`http://localhost:3001/api/reports/categories`);
       setCategories(response.data);
     } catch (error) {
       console.error('Cannot fetch categories:', error);
@@ -101,7 +101,7 @@ const ReportsModal = ({ open, close, onReportCreate }) => {
 
   const getDetails = async () => {
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/details`);
+      const response = await axios.get(`http://localhost:3001/api/reports/details`);
       setDetails(response.data);
     } catch (error) {
       console.error('Cannot fetch details:', error);
@@ -264,7 +264,7 @@ const ReportsModal = ({ open, close, onReportCreate }) => {
         report_end_date: formattedEndDate
       };
       
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/generate-report`, {
+      const response = await axios.get(`http://localhost:3001/api/reports/generate-report`, {
         params: params,
       });
 

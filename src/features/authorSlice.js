@@ -8,7 +8,7 @@ export const fetchAuthorOnline = createAsyncThunk(
         try {
             const auth = [];
 
-            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/authors');
+            const response = await axios.get('http://localhost:3001/api/data/authors');
 
             response.data.forEach(item => {
                 auth.push({

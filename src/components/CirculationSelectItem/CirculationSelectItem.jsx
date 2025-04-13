@@ -56,7 +56,7 @@ const CirculationSelectItem = () => {
     const endpoint = actionSelected === 'Check In' ? '/checkin/search' : '/checkout/search';
 
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/circulation${endpoint}`, {
+      const response = await axios.get(`http://localhost:3001/api/circulation${endpoint}`, {
         params: {
           query,
           ...(actionSelected === 'Check In' && { patron_id: id }),

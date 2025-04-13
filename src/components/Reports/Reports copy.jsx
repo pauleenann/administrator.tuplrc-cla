@@ -77,7 +77,7 @@ const Reports = () => {
         }),
       };
       
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/reports', { params });
+      const response = await axios.get('http://localhost:3001/api/reports', { params });
       console.log(response.data);  // Handle response here
       setGeneratedReport(response.data)
     } catch (error) {

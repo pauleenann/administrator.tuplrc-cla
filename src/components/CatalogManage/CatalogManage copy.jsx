@@ -19,7 +19,7 @@ const CatalogManage = () => {
 
   const getDepartments = async () => {
     try{
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/data/departments').then(res=>res.data)
+      const response = await axios.get('http://localhost:3001/api/data/departments').then(res=>res.data)
       setDepartments(response)
       console.log(response)
     }catch(err){
@@ -29,7 +29,7 @@ const CatalogManage = () => {
 
   const getTopics =async ()=>{
     try{
-        const response = await axios.get('https://api2.tuplrc-cla.com/api/data/topic').then(res=>res.data)
+        const response = await axios.get('http://localhost:3001/api/data/topic').then(res=>res.data)
         setTopics(response)
         console.log(response)
     }catch(err){

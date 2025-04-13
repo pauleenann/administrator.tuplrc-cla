@@ -105,7 +105,7 @@ const PatronImport = ({open, close}) => {
         try {
             setIsLoading(true);
             // Send the data to the server
-            const response = await axios.post('https://api2.tuplrc-cla.com/api/patron/import', {patrons: importData, username, username});
+            const response = await axios.post('http://localhost:3001/api/patron/import', {patrons: importData, username, username});
 
             setInvalidPatrons(response.data.invalidPatrons || []);
             setInsertedPatrons(response.data.insertedPatrons || []);

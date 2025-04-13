@@ -73,7 +73,7 @@ const Reports = () => {
   const getReports = async() => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/${userId}`);
+      const response = await axios.get(`http://localhost:3001/api/reports/${userId}`);
       setReports(response.data);
       setFilteredReports(response.data);
     } catch (error) {
@@ -85,7 +85,7 @@ const Reports = () => {
 
   const getCategories = async () => {
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/categories`);
+      const response = await axios.get(`http://localhost:3001/api/reports/categories`);
       console.log(response.data)
       setCategories(response.data);
     } catch (error) {
@@ -161,7 +161,7 @@ const Reports = () => {
     if (!result.isConfirmed) return; // Exit if user cancels
 
     try {
-      await axios.put(`https://api2.tuplrc-cla.com/api/reports/archive`,{id,reportState,username});
+      await axios.put(`http://localhost:3001/api/reports/archive`,{id,reportState,username});
       // Show toast first
       window.toast.fire({ 
         icon: "success", 

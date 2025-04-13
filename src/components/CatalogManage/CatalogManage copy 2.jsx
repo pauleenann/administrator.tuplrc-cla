@@ -26,7 +26,7 @@ const CatalogManage = () => {
 
   const getDepartments = async () => {
     try {
-      const response = await axios.get('https://api2.tuplrc-cla.com/api/data/departments');
+      const response = await axios.get('http://localhost:3001/api/data/departments');
       setDepartments(response.data);
     } catch (err) {
       console.log("Couldn't retrieve department data. Error:", err.message);
@@ -37,7 +37,7 @@ const CatalogManage = () => {
   const handleSelectedDepartment = async (id) => {
     setSelectedDepartmentId(id);
     try{
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/data/topic/${id}`).then(res=>res.data)
+      const response = await axios.get(`http://localhost:3001/api/data/topic/${id}`).then(res=>res.data)
       setTopics(response)
       
       console.log(response)
@@ -60,7 +60,7 @@ const CatalogManage = () => {
         }
 
         try {
-            const response = await axios.post("https://api2.tuplrc-cla.com/api/data/dept", {
+            const response = await axios.post("http://localhost:3001/api/data/dept", {
                 dept_name: deptName,
                 dept_shelf_no: shelfNo,
                 dept_id: editDeptId,
@@ -90,7 +90,7 @@ const CatalogManage = () => {
       }
 
       try {
-          const response = await axios.post("https://api2.tuplrc-cla.com/api/data/topic", {
+          const response = await axios.post("http://localhost:3001/api/data/topic", {
               topic_name: topicName,
               topic_row_no: topicRowNo,
               dept_id: selectedDepartmentId,

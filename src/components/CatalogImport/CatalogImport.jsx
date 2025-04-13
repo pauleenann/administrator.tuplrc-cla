@@ -159,7 +159,7 @@ const CatalogImport = ({open, close}) => {
         try {
             setIsLoading(true);
             // Send the data to the server
-            const response = await axios.post('https://api2.tuplrc-cla.com/api/resources/import', {importData, selectedType, username});
+            const response = await axios.post('http://localhost:3001/api/resources/import', {importData, selectedType, username});
             
             setInvalidResources(response.data.invalidResources || []);
             setInsertedResources(response.data.insertedRecords || []);

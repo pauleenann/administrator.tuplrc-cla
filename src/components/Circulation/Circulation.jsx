@@ -39,7 +39,7 @@ const Circulation = () => {
   const getBorrowers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://api2.tuplrc-cla.com/api/patron/borrowers`, {
+      const response = await axios.get(`http://localhost:3001/api/patron/borrowers`, {
         params: { page: currentPage, limit: itemsPerPage, query: query },
       });
 
