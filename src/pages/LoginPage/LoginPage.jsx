@@ -36,29 +36,34 @@ const LoginPage = () => {
       setError("Both fields are required.");
       return;
     }
-
+  
     try {
       setLoading(true);
-
+  
       const response = await axios.post(
-        "https://api2.tuplrc-cla.com/api/user/login",
+        'https://api2.tuplrc-cla.com/api/user/login',
         { username, password },
-        { withCredentials: true } // Include credentials for secure cookie handling
+        {
+          withCredentials: true, // needed if using cookies
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       );
-
+  
       if (response.status === 200) {
         console.log("Login successful:", response.data);
         // Redirect to dashboard
         navigate("/dashboard");
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || "An error occurred during login."
-      );
+      console.error("Login error:", err);
+      setError(err.response?.data?.message || "An error occurred during login.");
     } finally {
       setLoading(false);
     }
   };
+  
 
   // Handle "Enter" key press
   const handleKeyDown = (e) => {
