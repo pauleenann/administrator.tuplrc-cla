@@ -1,53 +1,39 @@
-import React, { useEffect, useState } from "react";
-import "./Reports.css";
-import axios from "axios";
-import Loading from "../Loading/Loading";
-import * as XLSX from "xlsx"; // Import xlsx for Excel export
-import dayjs from "dayjs";
+import React, { useEffect, useState } from 'react';
+import './Reports.css';
+import axios from 'axios';
+import Loading from '../Loading/Loading'
+import * as XLSX from 'xlsx'; // Import xlsx for Excel export
+import dayjs from 'dayjs'
 
 const Reports = () => {
   const reportType = [
-    "Attendance Report",
-    "Circulation Report",
-    "Inventory Report",
+    'Attendance Report',
+    'Circulation Report',
+    'Inventory Report'
   ];
 
   const subOptions = {
-    "Attendance Report": ["Daily Report", "Monthly Report", "Custom Date"],
-    "Circulation Report": [
-      "Daily Report",
-      "Monthly Report",
-      "Custom Date",
-      "Borrowed Resources",
-    ],
-    "Inventory Report": [
-      "All Resources",
-      "Book",
-      "Journals",
-      "Thesis & Dissertations",
-      "Newsletters",
-      "Available Resources",
-      "Lost Resources",
-      "Damaged Resources",
-    ],
+    'Attendance Report': ['Daily Report', 'Monthly Report', 'Custom Date'],
+    'Circulation Report': ['Daily Report','Monthly Report','Custom Date','Borrowed Resources'],
+    'Inventory Report': ['All Resources', 'Book', 'Journals', 'Thesis & Dissertations', 'Newsletters', 'Available Resources', 'Lost Resources', 'Damaged Resources'],
   };
 
   const [selectedType, setSelectedType] = useState({
-    type: "",
-    kind: "",
+    type: '',
+    kind: '',
   });
   const [customDate, setCustomDate] = useState({
-    startDate: "",
-    endDate: "",
+    startDate: '',
+    endDate: '',
   });
-  const [generatedReport, setGeneratedReport] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [generatedReport,setGeneratedReport] = useState([])
+  const [loading, setLoading] = useState(false)
 
   // Reset kind when type changes
   useEffect(() => {
     setSelectedType((prevSelected) => ({
       ...prevSelected,
-      kind: "",
+      kind: '',
     }));
   }, [selectedType.type]);
 
@@ -69,65 +55,62 @@ const Reports = () => {
 
   const handleClear = () => {
     setSelectedType({
-      type: "",
-      kind: "",
+      type: '',
+      kind: '',
     });
     setCustomDate({
-      startDate: "",
-      endDate: "",
+      startDate: '',
+      endDate: '',
     });
   };
 
   const handleGenerate = async () => {
-    console.log("Generating report...");
-    setLoading(true);
+    console.log('Generating report...');
+    setLoading(true)
     try {
       const params = {
         type: selectedType.type,
         kind: selectedType.kind,
-        ...(selectedType.kind === "Custom Date" && {
+        ...(selectedType.kind === 'Custom Date' && {
           startDate: customDate.startDate,
           endDate: customDate.endDate,
         }),
       };
-
-      const response = await axios.get(
-        "https://api2.tuplrc-cla.com/api/reports",
-        { params }
-      );
-      console.log(response.data); // Handle response here
-      setGeneratedReport(response.data);
+      
+      const response = await axios.get('https://api2.tuplrc-cla.com/api/reports', { params });
+      console.log(response.data);  // Handle response here
+      setGeneratedReport(response.data)
     } catch (error) {
-      console.error("Error generating report:", error);
-    } finally {
-      setLoading(false);
+      console.error('Error generating report:', error);
+    }finally{
+      setLoading(false)
     }
   };
 
   const exportToExcel = () => {
     // Check if the report data exists
     if (generatedReport.length === 0) {
-      console.error("No data to export");
+      console.error('No data to export');
       return;
     }
-
+  
     // Prepare the headers dynamically based on the report data
     const headers = Object.keys(generatedReport[0]);
-
+  
     // Format the data for Excel export
     const data = generatedReport.map((item, index) => {
       const formattedItem = {};
       Object.keys(item).forEach((key) => {
-        formattedItem[key.replace(/_/g, " ")] = item[key];
+        formattedItem[key.replace(/_/g, ' ')] = item[key];
       });
       return formattedItem;
     });
-
+  
     // Create a worksheet and a workbook
     const worksheet = XLSX.utils.json_to_sheet(data, { header: headers });
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Report");
-
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Report');
+  
     // Export to Excel file
     XLSX.writeFile(workbook, `${selectedType.type}-${selectedType.kind}.xlsx`);
   };
@@ -182,7 +165,7 @@ const Reports = () => {
         )}
 
         {/* Custom Date Range */}
-        {selectedType.kind === "Custom Date" && (
+        {selectedType.kind === 'Custom Date' && (
           <div className="custom">
             <input
               type="date"
@@ -219,48 +202,43 @@ const Reports = () => {
 
         {/* display generated report */}
         {generatedReport.length > 0 ? (
-          <div className="report">
-            <table>
-              <thead>
-                <tr>
-                  {Object.keys(generatedReport[0]).map((key, index) => (
-                    <td key={index}>{key}</td>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {generatedReport.map((item, index) => (
-                  <tr key={index}>
-                    {Object.keys(item).map((key, index) => {
-                      const value = item[key];
-                      const isDate = dayjs(value).isValid() && isNaN(value); // Ensure it's not a number
-
-                      return (
-                        <td key={index}>
-                          {isDate ? dayjs(value).format("DD/MM/YYYY") : value}
-                        </td>
-                      );
-                    })}
-                  </tr>
+        <div className="report">
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(generatedReport[0]).map((key, index) => (
+                  <td key={index}>{key}</td>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p>No data available</p>
-        )}
+              </tr>
+            </thead>
+            <tbody>
+              {generatedReport.map((item, index) => (
+                <tr key={index}>
+                  {Object.keys(item).map((key, index) => {
+                    const value = item[key];
+                    const isDate = dayjs(value).isValid() && isNaN(value); // Ensure it's not a number
 
-        {generatedReport.length > 0 ? (
-          <div className="d-flex">
-            <button className="btn export-report" onClick={exportToExcel}>
-              Export
-            </button>
-          </div>
-        ) : (
-          ""
-        )}
+                    return (
+                      <td key={index}>
+                        {isDate ? dayjs(value).format("DD/MM/YYYY") : value}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p>No data available</p>
+      )}
+
+      {generatedReport.length>0?
+      <div className="d-flex"><button className='btn export-report' onClick={exportToExcel}>Export</button></div>:''}
+
+        
       </div>
-      <Loading loading={loading} />
+      <Loading loading={loading}/>
     </div>
   );
 };

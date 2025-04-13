@@ -56,9 +56,7 @@ const Audit = () => {
     let filtered = audit;
 
     if (selectedActivity) {
-      filtered = filtered.filter((item) =>
-        item.new_value.includes(selectedActivity)
-      );
+      filtered = filtered.filter((item) => item.new_value.includes(selectedActivity));
     }
 
     if (startDate && endDate) {
@@ -98,7 +96,7 @@ const Audit = () => {
         `"${item.user_id}"`,
         `"${item.action_type}"`,
         `"${item.new_value.replace(/[{}"]/g, "").replace(/,/g, ";")}"`, // Formatting description properly
-        `"${item.formatted_timestamp}"`,
+        `"${item.formatted_timestamp}"`
       ];
       csvRows.push(row.join(","));
     });
@@ -163,10 +161,7 @@ const Audit = () => {
       </div>
 
       {/* Table */}
-      <div
-        className="t-overflow table-bordered"
-        style={{ height: "50vh", overflowY: "auto" }}
-      >
+      <div className="t-overflow table-bordered" style={{ height: "50vh", overflowY: "auto" }}>
         <table>
           <thead style={{ position: "sticky", zIndex: 10 }}>
             <tr>
@@ -185,9 +180,7 @@ const Audit = () => {
                   <td className="col-6 text-start border-start border-end">
                     {item.new_value.replace(/[{}"]/g, "").replace(/,/g, "\n")}
                   </td>
-                  <td className="col-2 text-center">
-                    {item.formatted_timestamp}
-                  </td>
+                  <td className="col-2 text-center">{item.formatted_timestamp}</td>
                 </tr>
               ))
             ) : !loading ? (
@@ -198,10 +191,7 @@ const Audit = () => {
               </tr>
             ) : (
               <tr>
-                <td
-                  colSpan="4"
-                  style={{ textAlign: "center", padding: "20px" }}
-                >
+                <td colSpan="4" style={{ textAlign: "center", padding: "20px" }}>
                   <div className="spinner-box">
                     <div className="spinner-grow text-danger" role="status">
                       <span className="sr-only">Loading...</span>

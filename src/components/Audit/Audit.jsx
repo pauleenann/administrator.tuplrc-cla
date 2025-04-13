@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Audit.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFileExport,
-  faArrowRight,
-  faArrowLeft,
-  faDownload,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFileExport,faArrowRight, faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const Audit = () => {
   const [audit, setAudit] = useState([]); // Stores all audit data
@@ -65,9 +60,7 @@ const Audit = () => {
     let filtered = audit;
 
     if (selectedActivity) {
-      filtered = filtered.filter((item) =>
-        item.new_value.includes(selectedActivity)
-      );
+      filtered = filtered.filter((item) => item.new_value.includes(selectedActivity));
     }
 
     if (startDate && endDate) {
@@ -98,13 +91,9 @@ const Audit = () => {
   const totalPages = Math.ceil(filteredAudit.length / recordsPerPage);
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = filteredAudit.slice(
-    indexOfFirstRecord,
-    indexOfLastRecord
-  );
+  const currentRecords = filteredAudit.slice(indexOfFirstRecord, indexOfLastRecord);
 
-  const nextPage = () =>
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   // Export to CSV
@@ -122,7 +111,7 @@ const Audit = () => {
         `"${item.user_id}"`,
         `"${item.action_type}"`,
         `"${item.new_value.replace(/[{}"]/g, "").replace(/,/g, ";")}"`,
-        `"${item.formatted_timestamp}"`,
+        `"${item.formatted_timestamp}"`
       ];
       csvRows.push(row.join(","));
     });
@@ -160,38 +149,25 @@ const Audit = () => {
             <option value="Edited a user">Edited User</option>
             <option value="Logged In">Login</option>
             <option value="Logged Out">Logout</option>
+            
           </select>
         </div>
 
         {/* Date Filters & Export */}
         <div className="d-flex justify-content-between">
           <div className="d-flex align-items-center gap-1">
-            <input
-              type="date"
-              className="shadow-sm form-control"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
+            <input type="date" className="shadow-sm form-control" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
             <span>to</span>
-            <input
-              type="date"
-              className="shadow-sm form-control"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-            <button className="btn btn-warning w-100" onClick={clearFilters}>
-              Clear filter
-            </button>
+            <input type="date" className="shadow-sm form-control" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+            <button className="btn btn-warning w-100" onClick={clearFilters}>Clear filter</button>
           </div>
-          <button
-            className="btn export-btn btn-success d-flex align-items-center gap-2"
-            onClick={exportToCSV}
-          >
-            <FontAwesomeIcon icon={faDownload} />
+          <button className="btn export-btn btn-success d-flex align-items-center gap-2" onClick={exportToCSV}>
+            <FontAwesomeIcon icon={faDownload}/>
             Export to Excel
           </button>
         </div>
       </div>
+      
 
       {/* Table */}
       <div className="audit-table-box">
@@ -210,17 +186,13 @@ const Audit = () => {
                 <tr key={index}>
                   <td>{item.user_id}</td>
                   <td>{item.action_type}</td>
-                  <td>
-                    {item.new_value.replace(/[{}"]/g, "").replace(/,/g, "\n")}
-                  </td>
+                  <td>{item.new_value.replace(/[{}"]/g, "").replace(/,/g, "\n")}</td>
                   <td>{item.formatted_timestamp}</td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="text-center">
-                  No records available
-                </td>
+                <td colSpan="4" className="text-center">No records available</td>
               </tr>
             )}
           </tbody>
@@ -229,24 +201,13 @@ const Audit = () => {
 
       {/* Pagination */}
       <div className="pagination">
-        <span>
-          {" "}
-          Page {currentPage} of {totalPages}{" "}
-        </span>
+        <span> Page {currentPage} of {totalPages} </span>
         <div>
-          <button
-            className="btn"
-            disabled={currentPage === 1}
-            onClick={prevPage}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
+          <button className="btn" disabled={currentPage === 1} onClick={prevPage}>
+            <FontAwesomeIcon icon={faArrowLeft}/>
           </button>
-          <button
-            className="btn"
-            disabled={currentPage === totalPages}
-            onClick={nextPage}
-          >
-            <FontAwesomeIcon icon={faArrowRight} />
+          <button className="btn" disabled={currentPage === totalPages} onClick={nextPage}>
+            <FontAwesomeIcon icon={faArrowRight}/>
           </button>
         </div>
       </div>

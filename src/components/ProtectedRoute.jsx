@@ -11,11 +11,11 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     const fetchUserRole = async () => {
       try {
         // Request server to verify the JWT token
-        const storedCreds = JSON.parse(localStorage.getItem('token'));
+        const response = await axios.get('https://api2.tuplrc-cla.com/api/user/check-session', { withCredentials: true });
 
         // If session is valid, set the role
-        if (storedCreds.message === "Login successful") {
-          setUserRole(storedCreds.user.role);
+        if (response.data.loggedIn) {
+          setUserRole(response.data.userRole);
         } else {
           setUserRole(null); // If not logged in, clear the role
         }

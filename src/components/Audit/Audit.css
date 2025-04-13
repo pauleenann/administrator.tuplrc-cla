@@ -22,7 +22,7 @@
     outline: 1px solid var(--tup-color);
     width: 100%;
     box-shadow: 0px 1px 2px var(--shadow);
-    /* table-layout: fixed; */
+    table-layout: fixed;
 }
 
 .audit-container table thead tr td,
@@ -36,7 +36,7 @@
 
 .audit-container table thead  tr td {
     background-color: var(--tup-color);
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
 }
 
 
@@ -71,10 +71,6 @@
 .audit-container .pagination div button{
     border: none;
     color: var(--tup-color);
-}
-
-.audit-container select{
-    height: 50px;
 }
 
 /* .audit-container input, .audit-container select, .audit-container button{
