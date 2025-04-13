@@ -10,13 +10,16 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Check if the user is already logged in when the component mounts
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const storedCreds = JSON.parse(localStorage.getItem("token"));
+        const response = await axios.get(
+          "https://api2.tuplrc-cla.com/api/user/check-session",
+          { withCredentials: true }
+        );
 
-        if (storedCreds.message === "Login successful") {
+        if (response.data.loggedIn) {
+          // If the user is logged in, redirect to the dashboard
           navigate("/dashboard");
         }
       } catch (error) {
@@ -45,7 +48,7 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         console.log("Login successful:", response.data);
-        localStorage.setItem("token", JSON.stringify(response.data));
+        // Redirect to dashboard
         navigate("/dashboard");
       }
     } catch (err) {
