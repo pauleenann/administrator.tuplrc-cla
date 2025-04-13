@@ -1,0 +1,133 @@
+@import '../../assets/styles/globals.css';
+
+.custom-spacing{
+    margin-left: 20px;
+}
+
+.edit-patron-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: hidden;   
+}
+
+.edit-patron-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.edit-patron-path-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-patron-path-button p{
+    margin: 0;
+}
+
+.edit-patron-back-button{
+    color: var(--button);
+    border: 1px solid var(--button);
+    background-color: var(--white);
+    transition: all 0.2s linear;
+}
+
+.edit-patron-back-button:hover,
+.edit-patron-back-button:focus,
+.edit-patron-back-button:active{
+    background-color: var(--button);
+    /* border: 1px solid var(--button); */
+    color: var(--white);
+
+}
+
+.edit-patron-path span{
+    color: var(--button);
+    font-weight: 700;
+}
+
+.patron-info{
+    background-color: var(--light-gray);
+    border-radius: 15px 15px 0px 0px;
+    overflow: hidden;
+    height: auto;
+}
+
+.patron-info-header{
+    background-color: var(--tup-color);
+    padding: 10px;
+    text-align: center;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.information-inputs{
+    font-size: 0.9rem;
+    padding: 50px 80px;
+    
+}
+
+.information-inputs .patron-input-box{
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    /* margin-bottom: 16px; */
+    position: relative;
+}
+
+.information-inputs .patron-input-box input, .information-inputs .patron-input-box select{
+    height: 45px;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid var(--table-border-bottom);
+    background-color: var(--white);
+    outline: none !important;
+}
+
+
+/* Style for the dropdown */
+.patron-dropdown {
+    width: 100%; /* Makes it take up the full width of the parent container */
+    padding: 8px; /* Adds inner spacing */
+    border: 1px solid #ccc; /* Defines a border */
+    border-radius: 4px; /* Adds rounded corners */
+    font-size: 14px; /* Adjusts font size */
+    background-color: #fff; /* Sets the background color */
+    appearance: none; /* Removes the browser-specific dropdown arrow */
+}
+
+
+.patron-input-box select, .patron-input-box input {
+    border: 1px solid var(--tup-color) !important;
+    background-color: var(--white);
+}
+
+
+.save-button {
+    background-color: var(--button); /* Green background */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Optional rounded corners */
+    margin-top: 30px; /* Add space above the button */
+    display: block; /* Make the button a block element */
+    margin-left: auto; /* Align to the right */
+    margin-right: auto; /* Align to the left */
+}
+
+.save-button:disabled{
+    background-color: var(--shadow);
+}
+
+.patron-error{
+    margin-top: 4px;
+    color: var(--tup-color);
+    font-style: italic;
+    font-size: 12px;
+}

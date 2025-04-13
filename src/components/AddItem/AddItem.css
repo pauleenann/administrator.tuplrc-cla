@@ -1,0 +1,96 @@
+@import '../../assets/styles/globals.css';
+
+.add-item-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: hidden;   
+}
+
+.add-item-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.add-item-path-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-item-path-button p{
+    margin: 0;
+}
+
+.add-item-back-button{
+    border-color: var(--tup-color);
+}
+
+.add-item-back-button:hover{
+    background-color: var(--tup-color);
+    color: var(--white);
+
+}
+
+.add-item-path span{
+    color: var(--tup-color);
+    font-weight: 700;
+}
+
+.cancel-save{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cancel-save button{
+    font-size: 1rem;
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.edit-btn-cont{
+    text-align: center;
+}
+
+.edit-item{
+    background-color: var(--tup-color);
+    color: var(--white);
+}
+
+.edit-item:hover, .edit-item:focus{
+    background-color: var(--button) !important;
+    color: var(--white) !important;
+}
+
+.add-item-cancel{
+    background-color: transparent;
+    border: 1px solid var(--tup-color);
+    transition: all 0.2s linear;
+}
+
+.add-item-cancel:hover{
+    background-color: var(--tup-color);
+    border-color: var(--tup-color);
+    color: var(--white);
+}
+
+.add-item-save{
+    background-color: var(--tup-color);
+    border: 1px solid var(--tup-color);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-item-save:hover{
+    background-color: var(--button-hover);
+    border: var(--button-hover);
+    color: var(--white);
+}
+

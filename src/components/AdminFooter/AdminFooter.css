@@ -1,0 +1,12 @@
+@import '../../assets/styles/globals.css';
+
+.adminfooter{
+    position: absolute;
+    text-align: center;
+    padding: 15px;
+    color: var(--white);
+    font-size: 12px;
+    bottom: 0;
+    width: 100%;
+    background-color:var(--tup-color) ;
+}

@@ -1,0 +1,37 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: url('../../assets/Fonts/Inter_24pt-Regular.ttf') format('ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    text-decoration: none !important;
+}
+
+:root{
+    --black:#1F1F1F;
+    --tup-color: #94152b;
+    --white: #fff;
+    --button:  #97170E;
+    --button-hover:  #75110a;
+    --shadow: #0000003b;
+    --yellow: #FFE900;
+    --yellow-hover:#FEDD00;
+    --yellow-filter: brightness(0) saturate(10%) invert(90%) sepia(41%) saturate(1000%) hue-rotate(332deg) brightness(103%) contrast(103%);
+    --white-filter:  brightness(100%) saturate(0) invert(100%) sepia(0) saturate(0) hue-rotate(0) brightness(1000%) contrast(100%);
+    --green: #54CB58;
+    --light-green: #54cb5893;
+    --light-gray: #F7F7F7;
+    --blue: #5499CB;
+    --table-header: #6F6A6A;
+    --disabled: #b9b9b9;
+    --table-border-bottom:#d1d1d1;
+    --light-red: rgba(148, 21, 43, 0.1);
+    --white-shadow: #ffffff54;
+}

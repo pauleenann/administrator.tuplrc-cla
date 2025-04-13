@@ -1,0 +1,103 @@
+@import '../../assets/styles/globals.css';
+
+.manage-catalog{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;   
+    overflow-y: hidden;
+}
+
+.manage-catalog h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.manage-catalog .back-path{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.manage-catalog .back-path button{
+    background-color: var(--white);
+    border-color: var(--tup-color);
+    color: var(--tup-color);
+}
+
+.manage-catalog .back-path button:hover,
+.manage-catalog .back-path button:active,
+.manage-catalog .back-path button:focus{
+    background-color: var(--tup-color);
+    border-color: var(--tup-color);
+    color: var(--white);
+}
+
+.manage-catalog .back-path p{
+    margin: 0;
+}
+
+.manage-catalog .back-path p span{
+    color: var(--tup-color);
+    font-weight: bold;
+}
+
+.manage-catalog .dept-btn .icon{
+    color: var(--tup-color);
+}
+
+.manage-catalog .add-dept-btn{
+    height: 50px;
+    background-color: var(--tup-color);
+    color: var(--white);
+    box-shadow: 0px 1px 2px var(--shadow);
+}
+
+.manage-catalog .add-dept-btn:hover,
+.manage-catalog .add-dept-btn:active,
+.manage-catalog .add-dept-btn:focus{
+    background-color: var(--button);
+    color: var(--white);
+}
+
+.manage-catalog .selected{
+    background-color: var(--white);
+}
+
+.manage-catalog .edit-btn{
+    color: var(--tup-color);
+}
+
+
+.manage-catalog .instructions{
+    color: var(--tup-color);
+    font-size: 0.8rem;
+}
+
+.manage-catalog .add-topic{
+    color: var(--tup-color);
+    
+}
+
+.manage-catalog .add-topic:hover,
+.manage-catalog .add-topic:active,
+.manage-catalog .add-topic:focus{
+    color: var(--tup-color);
+}
+
+.manage-catalog .trash-btn{
+    color: var(--tup-color);
+}
+
+.manage-catalog input{
+    border: 1px solid var(--tup-color);
+}
+
+.btn-secondary {
+    background-color: transparent !important;
+    color: #1F1F1F;
+    border: none;
+}

@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: url('../../assets/Fonts/Inter_24pt-Regular.ttf') format('ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    text-decoration: none;
+}
+
+:root{
+    --black:#1F1F1F;
+    --tup-color: #94152B;
+    --white: #fff;
+    --button:  #97170E;
+    --button-hover:  #75110a;
+    --shadow: #0000003b;
+    --yellow: #EDDF13;
+    --yellow-hover: rgb(218, 168, 3);
+    --yellow-filter: brightness(0) saturate(10%) invert(90%) sepia(41%) saturate(1000%) hue-rotate(332deg) brightness(103%) contrast(103%);
+    --white-filter:  brightness(100%) saturate(0) invert(100%) sepia(0) saturate(0) hue-rotate(0) brightness(1000%) contrast(100%);
+    --green: #54CB58;
+    --light-gray: #F7F7F7;
+    --blue: #5499CB;
+    --table-header: #6F6A6A;
+    --table-border-bottom:#D9D9D9;
+    --light-red: rgba(148, 21, 43, 0.1);
+    --lightest-red: #FFCBD4;
+    --lightest-green:#C7C48E
+}
+
+.reports-container{
+    padding: 10px 70px 50px;
+}
+
+.reports-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.reports-container h4{
+    color: var(--tup-color);
+    font-size: 2rem;
+}
+
+.reports-container .reports-summary{
+    background-color: var(--white);
+    border: 1px solid var(--tup-color);
+    padding: 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    /* width: 50%; */
+    margin: auto;
+    margin-top: 50px;
+}
+
+.reports-container .report-choices{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reports-container .custom{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.reports-container .report-type{
+    display: flex;
+    flex-direction: column;
+}
+
+.reports-container .sub-options{
+    display: flex;
+    flex-direction: column;
+}
+
+.reports-container .buttons{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.reports-container .report-type select,
+.reports-container .sub-options select,
+.reports-container .search{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid var(--tup-color);
+    width: 500px;
+    padding: 5px;
+}
+
+.reports-container .custom input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid var(--tup-color);
+    width: 200px;
+    padding: 5px;
+}
+
+.reports-container .buttons .clear-btn{
+    background-color: var(--white);
+    color: var(--tup-color);
+    border-color: var(--tup-color);
+}
+
+.reports-container .buttons .clear-btn:hover,
+.reports-container .buttons .clear-btn:active
+.reports-container .buttons .clear-btn:focus{
+    background-color: var(--button);
+    color: var(--white);
+}
+
+.reports-container .buttons .generate-report, .reports-container .export-report{
+    color: var(--white);
+    background-color: var(--tup-color);
+}
+
+.reports-container .buttons .generate-report:hover,
+.reports-container .buttons .generate-report:active,
+.reports-container .buttons .generate-report:focus,
+.reports-container .export-report:hover,
+.reports-container .export-report:active,
+.reports-container .export-report:focus{
+    /* color: var(--white); */
+    background-color: var(--button);
+}
+
+.reports-container .report{
+    border-radius: 5px;
+    font-size: 0.8rem;
+    overflow: hidden;
+    border: 1px solid var(--tup-color) !important;
+}
+
+
+.reports-container .report thead tr td{
+    background-color: var(--tup-color) !important;
+    color: var(--white);
+    /* font-size: 1rem !important; */
+    padding: 10px;
+    text-align: start;
+    text-transform: capitalize;
+}
+
+.reports-container .report tbody tr td{
+    vertical-align: middle;
+    /* font-size: 1rem !important; */
+    border-bottom: none;
+    padding: 10px;
+    text-align: start;
+}
+
+.reports-container .report tbody tr:nth-child(odd){
+    background-color: var(--white) !important;
+}
+
+.reports-container .report tbody tr:nth-child(even){
+    background-color: var(--light-red) !important;
+}
+
+.reports-container .pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reports-container .pagination .buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.reports-container .pagination .buttons button{
+    border: none;
+    color: var(--tup-color);
+}
+
+.reports-container .pagination .buttons button:hover{
+    background-color: var(--tup-color);
+    color: var(--white) !important;
+}
+
+.reports-container .pagination .buttons .icon{
+    background-color: none !important;
+}

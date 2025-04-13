@@ -1,0 +1,8 @@
+@import '../../assets/styles/globals.css';
+
+.resource-error{
+    margin: 0;
+    color: var(--button);
+    font-style: italic;
+    font-size: 12px;
+}

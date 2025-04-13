@@ -1,0 +1,5 @@
+.reportspage{
+    display: grid;
+    grid-template-columns: 80px auto;
+    overflow-x: hidden;
+}

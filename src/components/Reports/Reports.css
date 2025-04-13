@@ -1,0 +1,86 @@
+@import '../../assets/styles/globals.css';
+
+.reports-container{
+    padding: 10px 70px 50px;
+}
+
+.reports-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.reports-container h4{
+    color: var(--tup-color);
+    font-size: 2rem;
+}
+
+.reports-container .header{
+    background-color: var(--tup-color);
+    height: 50px;
+    font-size: 0.9rem;
+}
+
+.reports-container .data{
+    background-color: var(--white) !important;
+    min-height: 50px;
+    font-size: 0.9rem;
+    border: 1px solid var(--tup-color);
+}
+
+.reports-container .eye-btn{
+    color: var(--tup-color) !important;
+}
+
+.reports-container .download-btn:hover,
+.reports-container .download-btn:focus,
+.reports-container .download-btn:active,
+.reports-container .eye-btn:hover,
+.reports-container .eye-btn:active,
+.reports-container .eye-btn:focus{
+    border: 1px solid transparent;
+}
+
+.reports-container .create-btn{
+    background-color: var(--tup-color);
+    height: 50px;
+    color: var(--white);
+}
+
+.reports-container .sort-btn{
+    border: 1px solid var(--tup-color);
+    width: 50px;
+    height: 50px;
+}
+
+.reports-container .sort-btn .icon{
+    color: var(--tup-color);
+}
+
+
+.reports-container .search-bar:hover,
+.reports-container .search-bar:active,
+.reports-container .search-bar:focus{
+    outline: none;
+}
+
+.reports-container .search-btn{
+    background-color: var(--tup-color);
+    height: 50px;
+    width: 50px;
+    color: var(--white);
+}
+
+.reports-container .pagination-btn{
+    color: var(--tup-color);
+    border: none;
+}
+
+.reports-container .data-box{
+    min-height: 400px;
+}
+
+.reports-container .clear-btn{
+    background-color: var(--tup-color);
+    color: var(--white);
+}

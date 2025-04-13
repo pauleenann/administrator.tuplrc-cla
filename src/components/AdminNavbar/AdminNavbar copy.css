@@ -1,0 +1,126 @@
+@import '../../assets/styles/globals.css';
+
+.admin-navbar-container {
+    background-color: var(--tup-color);
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    background-color: var(--tup-color);
+    /* border-bottom: 1px solid #e0e6ed; */
+}
+
+.navbar-logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.logo-image {
+    max-width: 60px;
+    height: auto;
+}
+
+.navbar-heading {
+    text-align: center;
+}
+
+.navbar-heading-text {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.navbar-heading-cla {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.navbar-heading-lrc {
+    color: #fff;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.navbar-menu {
+    padding: 15px 0;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    transition: background-color 0.3s ease;
+}
+
+.menu-item.selected {
+    background-color: #810016;
+}
+
+.menu-item:hover {
+    background-color: #810016;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-icon-container {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.menu-icon {
+    color: var(--white);
+    font-size: 18px;
+}
+
+.menu-text p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.submenu {
+    background-color: #6e0416;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.submenu-list-item {
+    transition: background-color 0.3s ease;
+}
+
+.submenu-list-item:hover {
+    background-color: #810016;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 50px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+}

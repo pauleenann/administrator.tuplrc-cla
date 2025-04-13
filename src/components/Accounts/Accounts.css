@@ -1,0 +1,144 @@
+@import '../../assets/styles/globals.css';
+
+.accounts-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-x: hidden;   
+}
+
+.accounts-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.accounts-container .search-add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.accounts-container .search-btn{
+    background-color: var(--tup-color);
+    color: var(--white);
+    border-radius: 5px;
+    height: 50px;
+}
+
+.accounts-container .clear-btn{
+    height: 50px;
+}
+
+.accounts-container .create-btn{
+    background-color: var(--tup-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+}
+
+
+.accounts-container table{
+    text-align: start;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+    width: 100%;
+    outline: 1px solid var(--tup-color);
+    font-size: 0.9rem;
+    table-layout: fixed;
+}
+
+.accounts-container table thead tr td{
+    background-color: var(--tup-color) !important;
+    color: var(--white);
+    width: 70px;
+    /* font-size: 1rem !important; */
+    padding: 10px;
+}
+
+.accounts-container table tbody tr td{
+    vertical-align: middle;
+    /* font-size: 1rem !important; */
+    border-bottom: none;
+    padding: 10px;
+}
+
+.accounts-container table tbody tr:nth-child(odd){
+    background-color: var(--white) !important;
+}
+
+.accounts-container table tbody tr:nth-child(even){
+    background-color: var(--light-red) !important;
+}
+
+.accounts-container table .action{
+    display: flex;
+    gap: 5px;
+}
+
+.accounts-container .action .edit-btn,
+.accounts-container .deac-acc-btn{
+    color: var(--tup-color);
+}
+
+.accounts-container .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accounts-container .buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.accounts-container .pagination button{
+    background-color: transparent !important;
+    color: var(--tup-color);
+}
+
+.accounts-container .pagination .btn:disabled{
+    border: none !important;
+    background-color: var(--disabled);
+}
+
+.accounts-container .pagination .btn:enabled{
+    background-color: var(--tup-color);
+    border: none !important;
+}
+
+.accounts-container table .sort{
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.accounts-container table .sort option{
+    color: var(--black);
+}
+
+
+.accounts-container .active{
+    background-color: var(--green);
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    color: var(--white);
+}
+
+.accounts-container .inactive{
+    background-color: var(--tup-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    color: var(--white);
+}

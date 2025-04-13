@@ -1,0 +1,74 @@
+@import '../../assets/styles/globals.css';
+
+.view-item-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: hidden;   
+}
+
+.view-item-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.view-item-path-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.view-item-path-button p{
+    margin: 0;
+}
+
+.view-item-back-button{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    border-radius: 20px;
+    color: var(--button);
+    border: 1px solid var(--button);
+    background-color: var(--white);
+    transition: all 0.2s linear;
+}
+
+.view-item-back-button:hover{
+    background-color: var(--button);
+    color: var(--white);
+
+}
+
+.view-item-path span{
+    color: var(--button);
+    font-weight: 700;
+}
+
+.edit{
+    display: flex;
+    justify-content: center;
+}
+
+.view-item{
+    font-size: 1rem;
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--button);
+    border: 1px solid var(--button);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-item:hover{
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+}

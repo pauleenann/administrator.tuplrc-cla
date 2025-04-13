@@ -1,0 +1,82 @@
+@import '../../assets/styles/globals.css';
+
+.audit-container {
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-x: auto; /* Add horizontal scrolling if content overflows */
+}
+
+.audit-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+
+.audit-container table {
+    border-radius: 10px;
+    overflow: hidden !important;
+    text-align: start;
+    outline: 1px solid var(--tup-color);
+    width: 100%;
+    box-shadow: 0px 1px 2px var(--shadow);
+    /* table-layout: fixed; */
+}
+
+.audit-container table thead tr td,
+.audit-container table tbody tr td {
+    padding: 10px;
+    word-wrap: break-word; /* Enable word wrapping */
+    white-space: normal; /* Allow text to wrap */
+    overflow-wrap: break-word; /* Break long words if necessary */
+     /* Adjust this value as needed for consistent cell size */
+}
+
+.audit-container table thead  tr td {
+    background-color: var(--tup-color);
+    font-size: 1rem !important;
+}
+
+
+.audit-container table{
+    overflow-y: auto;
+    height: 50vh;
+    
+}
+.audit-container table thead tr td {
+    color: var(--white);
+    font-size: 1rem; /* Slightly larger for header */
+    
+}
+
+.audit-container table tbody tr td {
+    font-size: 0.8rem !important; /* Force smaller font size */
+    padding: 10px;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 150px;
+}
+
+/* .audit-container table tbody tr td{
+    padding: 10px;
+} */
+
+.audit-container table tbody tr:nth-child(even) {
+    background-color: var(--light-red);
+}
+
+.audit-container .pagination div button{
+    border: none;
+    color: var(--tup-color);
+}
+
+.audit-container select{
+    height: 50px;
+}
+
+/* .audit-container input, .audit-container select, .audit-container button{
+    height: 50px;
+} */

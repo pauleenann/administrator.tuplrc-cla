@@ -1,0 +1,223 @@
+@import '../../assets/styles/globals.css';
+
+.circ-checkout-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;   
+}
+
+.circ-checkout-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.circ-checkout-container .back-path{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.circ-checkout-container .back-path button{
+    background-color: var(--white);
+    border-color: var(--tup-color);
+    color: var(--tup-color);
+}
+
+.circ-checkout-container .back-path button:hover,
+.circ-checkout-container .back-path button:active,
+.circ-checkout-container .back-path button:focus{
+    background-color: var(--tup-color);
+    border-color: var(--tup-color);
+    color: var(--white);
+}
+
+.circ-checkout-container .back-path p{
+    margin: 0;
+}
+
+.circ-checkout-container .back-path p span{
+    color: var(--tup-color);
+    font-weight: bold;
+}
+
+.circ-checkout-container .checkout-details{
+    column-gap: 20px;
+}
+
+
+.circ-checkout-container .checkout-details .items{
+    background-color: var(--white);
+    padding: 50px;
+    height: 80vh;
+    border-radius: 10px;
+}
+
+.circ-checkout-container .checkout-details .items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.circ-checkout-container .checkout-details .items h5{
+    position: relative;
+    left: -10px;
+    margin-bottom: 15px;
+}
+
+.circ-checkout-container .checkout-details .item{
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--tup-color);
+}
+
+.circ-checkout-container .checkout-details .item .cover img{
+    width: 70px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.circ-checkout-container .checkout-details .item .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.circ-checkout-container .checkout-details .item .info .title{
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.circ-checkout-container .checkout-details .item .info .qnty{
+    margin: 0;
+    font-size: 1rem !important;
+    color: var(--table-header);
+}
+
+.circ-checkout-container .checkout-details .item .remove{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.circ-checkout-container .checkout-details .item .remove:hover,
+.circ-checkout-container .checkout-details .item .remove:focus,
+.circ-checkout-container .checkout-details .item .remove:active{
+    color: var(--tup-color);
+}
+
+.circ-checkout-container .edit-btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    left: -10px;
+}
+
+
+.circ-checkout-container .edit-btn:hover,
+.circ-checkout-container .edit-btn:active,
+.circ-checkout-container .edit-btn:focus{
+    color: var(--tup-color);
+    border-color: none !important;
+}
+
+.circ-checkout-container .checkout-details .checkout-sum{
+    background-color: var(--white);
+    padding: 0 !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.circ-checkout-container .checkout-sum .header{
+    background-color: var(--tup-color);
+    width: 100%;
+    padding: 20px;
+    color: var(--white);
+    font-size: 1.1rem;
+}
+
+.circ-checkout-container .patron-info-box{
+    padding: 20px 30px;
+}
+
+.circ-checkout-container .patron-info-box .label{
+    font-size: 1.2rem;
+}
+
+.circ-checkout-container .patron-info-box p{
+    margin: 0;
+}
+
+.circ-checkout-container .patron-info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.circ-checkout-container .patron-info .patron-name{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.circ-checkout-container .patron-info .id{
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+
+.circ-checkout-container .patron-info .college,
+.circ-checkout-container .patron-info .course{
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.circ-checkout-container .patron-info .email{
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.circ-checkout-container .checkout-sum hr{
+    margin-top: 30px;
+}
+
+.circ-checkout-container .book-info-box{
+    padding: 20px;
+}
+
+.circ-checkout-container .book-info-box .labels{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-style: italic;
+}
+
+.circ-checkout-container .book-info-box .contents{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.circ-checkout-container .book-info-box .contents .due{
+    font-weight: bold;
+}
+
+.circ-checkout-container .checkout-btn-box{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+.circ-checkout-container .checkout-btn-box button{
+    background-color: var(--tup-color);
+    color: var(--white);
+    height: 50px;
+}

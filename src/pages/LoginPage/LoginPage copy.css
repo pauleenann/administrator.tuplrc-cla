@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+    --black:#1F1F1F;
+    --tup-color: #94152B;
+    --white: #fff;
+    --button:  #97170E;
+    --button-hover:  #75110a;
+    --shadow: #0000003b;
+    --yellow: #EDDF13;
+    --yellow-hover: rgb(218, 168, 3);
+    --yellow-filter: brightness(0) saturate(10%) invert(90%) sepia(41%) saturate(1000%) hue-rotate(332deg) brightness(103%) contrast(103%);
+    --white-filter:  brightness(100%) saturate(0) invert(100%) sepia(0) saturate(0) hue-rotate(0) brightness(1000%) contrast(100%);
+    --green: #54CB58;
+    --light-gray: #F7F7F7;
+    --blue: #5499CB;
+    --table-header: #6F6A6A;
+    --table-border-bottom:#D9D9D9;
+    --light-red: rgba(148, 21, 43, 0.1);
+    --lightest-red: #FFCBD4;
+    --lightest-green:#C7C48E
+}
+
+.login-container {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif; 
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background: url(../../assets/attendance-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 50px;
+    box-shadow: 0 4px 15px var(--shadow); 
+    border-radius: 15px;
+    background: white;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 10px 0; */
+    gap: 10px;
+}
+
+.logo {
+    max-width: 50px; 
+    height: auto;
+}
+
+
+.login-container h1 {
+    margin: 0 0 5px;
+    font-size: 24px;
+    font-weight: 700; 
+    color: var(--tup-color);
+}
+
+.login-container h2 { 
+    font-size: 18px;
+    font-weight: 500; 
+    color: var(--table-header); 
+    /* padding-bottom: 20px; */
+    padding: 0;
+    margin: 0;
+}
+
+.login-container .input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-box input{
+    width: 100%;
+    padding: 10px;
+    height: 40px;
+    border-radius: 5px;
+    border-color: var(--shadow);
+}
+
+.login-btn{
+    background-color: var(--tup-color);
+    color: var(--white);
+}
+
+
+.login-btn:hover,
+.login-btn:focus,
+.login-btn:active {
+    background-color: var(--button);
+    transform: translateY(-2px); 
+    color: var(--white);
+}
+
+.login-container .error-message{
+    color: var(--tup-color);
+    font-style: italic;
+}

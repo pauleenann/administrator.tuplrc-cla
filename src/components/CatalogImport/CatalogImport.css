@@ -1,0 +1,35 @@
+@import '../../assets/styles/globals.css';
+
+.import-modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.import-modal-overlay{
+    background-color: var(--shadow);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.import-modal-box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.import-modal-container .error{
+    font-size: 0.8rem;
+}
+

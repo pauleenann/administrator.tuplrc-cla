@@ -1,0 +1,58 @@
+@import '../../assets/styles/globals.css';
+
+.res-status-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.res-status-overlay{
+    background-color: var(--shadow);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.res-status-box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 70px;
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 25%;
+    text-align: center;
+    z-index: 1000;
+}
+
+.res-status-box .icon{
+    font-size: 4rem;
+    color: var(--tup-color);
+}
+
+.res-status-box span{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.res-status-box button{
+    margin-top: 10px;
+    background-color: var(--tup-color);
+    color: var(--white);
+}
+
+.res-status-box button:hover,
+.res-status-box button:active,
+.res-status-box button:focus{
+    background-color: var(--black);
+    color: var(--white);
+}

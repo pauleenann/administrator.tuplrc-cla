@@ -1,0 +1,97 @@
+@import '../../assets/styles/globals.css';
+
+.cataloging-box{
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    height: auto;
+}
+
+.cataloging-info-header{
+    background-color: var(--tup-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.cataloging-inputs{
+    padding: 50px 80px;
+}
+
+.cataloging-inputs .info-input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cataloging-inputs .info-input-box select{
+    cursor:pointer !important;
+}
+
+.cataloging-inputs .info-input-box .form-select:focus{
+    border: 3px solid var(--black);
+    box-shadow: none;
+    outline: none;
+}
+
+.cataloging-inputs .info-input-box input, .cataloging-inputs .info-input-box select{
+    height: 45px;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border-color: var(--tup-color);
+    background-color: var(--white);
+}
+
+.form-switch{
+    margin-top: 50px;
+}
+
+.form-check{
+    margin-left: 0px;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+
+.form-check-label{
+    cursor: pointer;
+}
+
+
+.form-check-input{
+    height: 30px;
+    padding: 0 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-check-input:focus{
+    box-shadow: none;
+}
+
+.form-check-input:checked{
+    background-color: var(--tup-color);
+    
+}
+
+.switch-label{
+    display: flex;
+    flex-direction: column;
+}
+
+.switch-label label{
+    font-size: 1.2rem;
+}
+
+.dept_name, .form-select{
+    text-transform: capitalize;
+}
+
+.resource-error{
+    margin: 0;
+    color: var(--tup-color);
+    font-style: italic;
+    font-size: 12px;
+}

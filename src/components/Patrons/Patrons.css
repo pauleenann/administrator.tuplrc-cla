@@ -1,0 +1,193 @@
+@import '../../assets/styles/globals.css';
+
+.patrons-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-x: hidden;    
+}
+
+.patrons-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.patrons-container .search-bar-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.patrons-container .patrons-search-bar{
+    height: 50px;
+    padding: 10px;
+    padding-left: 15px;
+    width: 400px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.patrons-container .patrons-search-bar:active,.patrons-container .patrons-search-bar:focus{
+    /* border: 3px solid var(--button); */
+    outline: none;
+}
+
+.patrons-container .patrons-search-button{
+    width: 50px;
+}
+
+.patrons-container .patrons-search-button, .patrons-container .patrons-add-btn{
+    height: 50px;
+    border: none;
+    background-color: var(--tup-color);
+    color: var(--white);
+    padding: 8px 10px;
+    /* width: 110px; */
+    font-size: 1rem !important;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.patrons-container .patrons-search-button:hover{
+    background-color: var(--button);
+}
+
+.patrons-container table td {
+    text-align: start;      /* Center horizontally */
+    font-size: 0.9rem;
+}
+
+.patrons-container table {
+    /* table-layout: fixed; */
+    outline: 1px solid var(--tup-color);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: start;
+    width: 100%;
+}
+
+.patrons-container table thead{
+    background-color: var(--tup-color);
+    color: var(--white);
+}
+
+.patrons-container table tr td{
+    padding: 10px;
+    border-bottom: none !important;
+}
+
+.patrons-container table thead tr td{
+    padding: 10px;
+}
+.patrons-container table tbody tr:nth-child(even){
+    background-color: var(--light-red);
+}
+
+
+.patrons-container .patron-edit-button,.patrons-container  .patron-view-button{
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center;    /* Center vertically */
+        height: 40px;           /* Ensure it fills the cell height */
+        gap: 5px;               /* Keep this if needed */
+        /* width: 80px; */
+        /* background-color: var(--tup-color); */
+        color: var(--tup-color) !important;
+        outline: none;
+        border: none;
+}
+
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 2px; 
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.pagination .buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.pagination .buttons button {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    color: var(--tup-color);
+}
+
+.pagination .buttons button:disabled {
+    opacity: 0.5; 
+    cursor: default;
+}
+
+.patron-edit-checkout {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adjust spacing between buttons */
+}
+
+.patron-edit-button,
+.patron-view-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* Adjust button width */
+    height: 36px; /* Adjust button height */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.patron-edit-button {
+    background-color: transparent; 
+    color: white;
+}
+
+.patron-view-button {
+    background-color: transparent; 
+    color: white;
+}
+
+.patron-edit-button:hover,
+.patron-view-button:hover {
+    opacity: 0.8;
+}
+
+.patrons-container select{
+    height: 50px;
+}
+
+.patrons-container .no-data{
+    color: var(--tup-color);
+}
+
+.patrons-container .sort{
+    height: auto;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.patrons-container .sort option{
+    color: var(--black);
+}
+
+.patrons-container .name{
+    text-transform: capitalize !important;
+}

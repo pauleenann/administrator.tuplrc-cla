@@ -1,0 +1,57 @@
+@import '../../assets/styles/globals.css';
+
+.dashboard-table{
+    /* background-color: #97170E; */
+    width: 100%;
+    /* table-layout: fixed; */
+}
+
+.dashboard-table .clickable:hover{
+    cursor: pointer;
+    background-color: var(--light-gray);
+}
+
+.dashboard-table thead tr td{
+    color:gray;
+    font-size: 0.9rem;
+    /* min-width: 100px; */
+}
+
+.dashboard-table tbody tr td{
+    color: var(--black);
+    font-size: 0.9rem;
+}
+
+.dashboard-table td{
+    padding: 5px;
+    border-bottom:1px solid var(--table-border-bottom);
+}
+
+
+
+.skeleton {
+    background: #E0E0E0 25%;
+    background-size: 200% 100%;
+    animation: pulse 1.5s infinite linear;
+    height: 20px;
+    width: 80%;
+    border-radius: 4px;
+  }
+  
+  .skeleton-text {
+    height: 16px;
+    width: 60%;
+  }
+  
+  @keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+  

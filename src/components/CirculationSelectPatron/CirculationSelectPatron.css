@@ -1,0 +1,162 @@
+@import '../../assets/styles/globals.css';
+
+.circ-select-patron-container{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;   
+}
+
+.circ-select-patron-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.circ-select-patron-container .back-path{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.circ-select-patron-container .back{
+    background-color: var(--white);
+    border-color: var(--tup-color);
+    color: var(--tup-color);
+}
+
+.circ-select-patron-container .back:hover,
+.circ-select-patron-container .back:active,
+.circ-select-patron-container .back:focus{
+    background-color: var(--tup-color);
+    border-color: var(--tup-color);
+    color: var(--white);
+}
+
+.circ-select-patron-container p{
+    margin: 0;
+}
+
+.circ-select-patron-container p span{
+    color: var(--tup-color);
+    font-weight: bold;
+}
+
+.circ-select-patron-container .search-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.circ-select-patron-container .search-container p{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.circ-select-patron-container .search-container input{
+    height: 50px;
+    width: 70%;
+    border:1px solid gainsboro;
+    outline: none !important;
+    border-radius: 5px;
+    padding-left: 10px;
+    box-shadow: 0px 1px 2px var(--shadow);
+}
+
+.circ-select-patron-container .search-container button{
+    background-color: var(--tup-color);
+    color: var(--white);
+    height: 50px;
+    width: 50px;
+    box-shadow: 0px 1px 2px var(--shadow);  
+}
+
+.circ-select-patron-container .search-container button:hover,
+.circ-select-patron-container .search-container button:active,
+.circ-select-patron-container .search-container button:focus{
+    background-color: var(--tup-color-hover);
+    color: var(--white);
+}
+
+.circ-select-patron-container .patron-list{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: auto;
+}
+
+.circ-select-patron-container .patron-list p{
+    position: relative;
+    left: -10px;
+}
+
+.circ-select-patron-container .patron-list-header{
+    background-color: var(--tup-color);
+    padding: 15px;
+    color: var(--white);
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0px 1px 2px var(--shadow);
+}
+
+.circ-select-patron-container .patron-list .patron{
+    background-color: var(--white);
+    border: 1px solid var(--tup-color);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: var(--black);
+    margin-bottom: 5px;
+    min-height: 60px;
+    box-shadow: 0px 1px 2px var(--shadow);
+}
+
+
+
+.circ-select-patron-container .patron-list .patron div:nth-child(1){
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.circ-select-patron-container .pagination{
+    display: flex;
+    justify-content: end;
+    position: relative;
+    right: -10px;
+}
+
+.circ-select-patron-container  .patron-list .pagination  .buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.circ-select-patron-container .patron-list .pagination button{
+    background-color: transparent;
+    color: var(--tup-color);
+    border: none;
+}
+
+.patron.disabled {
+    pointer-events: none; /* Disable interaction */
+    opacity: 0.6; /* Slightly fade the row */
+    background-color: #f0f0f0; /* Light grey background */
+    color: #888; /* Grey text */
+    cursor: not-allowed; /* Change cursor to indicate unclickable */
+}
+
+    .patron input[type="radio"]:disabled {
+    cursor: not-allowed; /* Indicate disabled radio button */
+}
+
+.circ-select-patron-container .no-data{
+    color: var(--tup-color);
+}

@@ -1,0 +1,51 @@
+@import '../../assets/styles/globals.css';
+
+.view-patron-table-container h1{
+    color: var(--tup-color) !important;
+}
+
+.view-patron-table-container .search-filter input{
+    padding: 5px;
+    border: 1px solid var(--shadow);
+    border-radius: 5px;
+}
+
+.view-patron-table-container table{
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    min-height: 200px;
+    outline: 1px solid var(--tup-color);
+}
+
+.view-patron-table-container .dropdown-menu{
+    
+}
+
+.view-patron-table-container table thead td{
+    background-color: var(--tup-color);
+    text-align: center;
+    color: var(--white);
+    padding: 5px;
+}
+
+.view-patron-table-container table tbody td{
+    padding: 8px;
+    text-align: center;
+}
+
+.view-patron-table-container table tbody tr:nth-child(even){
+   background-color: var(--light-red); 
+}
+
+.view-patron-table-container .pagination button{
+    color: var(--tup-color);
+    border: none;
+}
+
+.view-patron-table-container .pagination button:hover,
+.view-patron-table-container .pagination button:active,
+.view-patron-table-container .pagination button:focus{
+    color: var(--tup-color);
+    border: none;
+}

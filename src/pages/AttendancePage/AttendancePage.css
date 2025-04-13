@@ -1,0 +1,302 @@
+/* AttendancePage.css */
+:root {
+  --primary-color: #003366;
+  --secondary-color: #800000;
+  --tup-color: #94152b;
+  --accent-color: #ffd700;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --background-light: #f8f9fa;
+  --background-medium: #e9ecef;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+
+.attendance-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image:url("../../assets/attendance-bg.png");
+  background-position: center;
+  background-size:cover;
+}
+
+/* Header Styles */
+.attendance-container .header {
+  background: linear-gradient(135deg, var(--tup-color) 0%, var(--tup-color) 100%);
+  color: var(--text-light);
+  padding: 16px;
+}
+
+.attendance-container .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.attendance-container .logo-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.attendance-container .header-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.attendance-container .header-title {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.attendance-container .header-title h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.attendance-container .header-title h2 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.attendance-container .datetime-display {
+  text-align: right;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+}
+
+.attendance-container .datetime-display .date {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* Main Content */
+.attendance-container .content {
+  flex: 1;
+  padding: 32px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.attendance-container .attendance-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 600px;
+  padding: 32px;
+  transition: var(--transition);
+}
+
+.attendance-container .card-title {
+  color: var(--tup-color);
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--background-medium);
+  padding-bottom: 16px;
+}
+
+.attendance-container .instructions {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+  font-size: 16px;
+}
+
+/* Success Panel */
+.attendance-container .student-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin: 24px 0;
+  gap: 16px;
+}
+
+.attendance-container .welcome-icon {
+  font-size: 48px;
+  color: var(--success-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: rgba(40, 167, 69, 0.2);
+  border-radius: 50%;
+}
+
+.attendance-container .welcome-text {
+  text-align: left;
+}
+
+.attendance-container .welcome-message, .attendance-container .student-name {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.attendance-container .welcome-message {
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+.attendance-container .student-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--success-color);
+}
+
+/* Search Bar */
+.attendance-container .search-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.attendance-container .form-input {
+  flex-grow: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--background-medium);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.attendance-container .form-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.2);
+}
+
+.attendance-container .search-button {
+  background-color: var(--tup-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.attendance-container  .search-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.attendance-container .search-button:active {
+  transform: scale(0.98);
+}
+
+.attendance-container .search-button.loading {
+  background-color: var(--tup-color);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Message Styles */
+.attendance-container .message {
+  padding: 16px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition);
+  animation: fadeIn 0.3s ease;
+}
+
+.attendance-container .message.success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+  color: var(--success-color);
+}
+
+.attendance-container .message.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  color: var(--error-color);
+}
+
+/* Footer */
+.attendance-container .footer {
+  background-color: var(--tup-color);
+  color: var(--text-light);
+  text-align: center;
+  padding: 16px;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .attendance-container .header-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .attendance-container .logo-group {
+    justify-content: center;
+  }
+  
+  .attendance-container .datetime-display {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .attendance-container .attendance-card {
+    padding: 24px 16px;
+  }
+  
+  .attendance-container .search-bar {
+    flex-direction: column;
+  }
+  
+  .attendance-container .search-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .attendance-container .header-logo {
+    height: 40px;
+  }
+  
+  .attendance-container .header-title h1 {
+    font-size: 20px;
+  }
+  
+  .attendance-container .card-title {
+    font-size: 20px;
+  }
+  
+  .attendance-container .student-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .attendance-container .welcome-text {
+    text-align: center;
+  }
+}

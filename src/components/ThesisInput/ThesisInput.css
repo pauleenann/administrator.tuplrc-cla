@@ -1,0 +1,56 @@
+@import '../../assets/styles/globals.css';
+
+.adviser-box{
+    padding: 15px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--button);
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.adviser span{
+    margin: 5px 3px;
+    background-color: var(--light-red);
+    display: inline-block;
+    align-items: center;
+    padding: 5px 15px;  
+    border-radius: 20px; 
+}
+
+.adviser button{
+    background-color: transparent;
+    border: none;
+    font-size: 0.7rem;
+}
+
+.add-adviser{
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+}
+
+.delete-adviser{
+    font-size: 10px;
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+}
+
+.delete-adviser:hover{
+    color: var(--button);
+}
+
+.resource-error{
+    margin: 0;
+    color: var(--button);
+    font-style: italic;
+    font-size: 12px;
+}

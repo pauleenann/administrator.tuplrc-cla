@@ -1,0 +1,74 @@
+@import '../../assets/styles/globals.css';
+
+.circ-success-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.circ-success-container .circ-success-overlay{
+    background-color: var(--overlay);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.circ-success-container .circ-success-box{
+    position: absolute;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--catalog-info-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 28%;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.circ-success-container .circ-success-box .close{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+
+.circ-success-container .icon{
+    color: var(--tup-color);
+}
+
+.circ-success-container .circ-success-box .patron{
+    text-align: center;
+    margin: 15px 0;
+}
+
+.circ-success-container .circ-success-box .patron p{
+    margin: 0;
+}
+
+.circ-success-container .circ-success-box .patron p:nth-child(1){
+    font-size: 1.2rem;
+}
+
+.circ-success-container .circ-success-box .patron p:last-child{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--tup-color);
+    font-weight: bold;
+}
+
+.circ-success-container .circ-success-box .okay-btn{
+    background-color: var(--tup-color);
+    color: var(--white);
+    margin: 10px 0;
+}
+
+.circ-success-container .circ-success-box .okay-btn:hover,
+.circ-success-container .circ-success-box .okay-btn:active,
+.circ-success-container .circ-success-box .okay-btn:focus{
+    background-color: var(--tup-color);
+    color: var(--white);
+}

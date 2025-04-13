@@ -1,0 +1,26 @@
+@import '../../assets/styles/globals.css';
+
+.manage-catalog{
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;   
+    overflow-y: hidden;
+}
+
+.manage-catalog h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.manage-catalog .pill-bg,
+.manage-catalog .add-btn{
+    background-color: var(--tup-color) !important;
+}
+
+.manage-catalog .active-path{
+    color: var(--tup-color);
+}

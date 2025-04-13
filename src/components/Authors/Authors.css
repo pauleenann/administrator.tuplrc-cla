@@ -1,0 +1,74 @@
+@import '../../assets/styles/globals.css';
+
+.authors-container {
+    padding: 10px 70px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    overflow-x: auto; /* Add horizontal scrolling if content overflows */
+}
+
+.authors-content{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    margin: auto;
+}
+
+.authors-container .authors-content .search{
+    padding: 10px;
+    width: 50%;
+    border: 1px solid var(--table-border-bottom);
+    border-radius: 5px ;
+}
+
+.authors-container h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.authors-container .author-header{
+    background-color: var(--tup-color);
+    margin: 0;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    color: var(--white);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.authors-container .header p{
+    margin: 0;
+}
+
+.authors-container .author-details{
+    background-color: var(--white);
+    border: 1px solid var(--tup-color);
+    margin: 0;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.authors-container .author-details p{
+    margin: 0;
+}
+
+.authors-container .authors-content .add-author{
+    background-color: var(--tup-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.authors-container .pagination button{
+    color: var(--tup-color);
+}
