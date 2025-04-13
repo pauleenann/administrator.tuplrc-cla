@@ -27,7 +27,7 @@ const ViewPatron = () => {
 
   const getPatron = async ()=>{
     setPatronLoading(true)
-    axios.get(`http://localhost:3001/api/patron/${id}`) 
+    axios.get(`https://api2.tuplrc-cla.com/api/patron/${id}`) 
       .then((response) => {
          setPatron(response.data[0]);
       })
@@ -42,7 +42,7 @@ const ViewPatron = () => {
 
   const getLogHistory = async ()=>{
     setLogHistoryLoading(true)
-    axios.get(`http://localhost:3001/api/patron/log/${id}`) 
+    axios.get(`https://api2.tuplrc-cla.com/api/patron/log/${id}`) 
       .then((response) => {
          setLogHistory(response.data);
       })
@@ -57,7 +57,7 @@ const ViewPatron = () => {
 
   const getCirculationHistory = async ()=>{
     setCirculationHistoryLoading(true)
-    axios.get(`http://localhost:3001/api/patron/circulation/${id}`) 
+    axios.get(`https://api2.tuplrc-cla.com/api/patron/circulation/${id}`) 
       .then((response) => {
          setCirculationHistory(response.data);
       })

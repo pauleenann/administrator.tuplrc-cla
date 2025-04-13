@@ -14,7 +14,7 @@ const LoginPage = () => {
     useEffect(() => {
         const checkLoginStatus = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
+                const response = await axios.get('https://api2.tuplrc-cla.com/api/user/check-session', { withCredentials: true });
                 
                 if (response.data.loggedIn) {
                     // If the user is logged in, redirect to the dashboard
@@ -39,7 +39,7 @@ const LoginPage = () => {
             setLoading(true);
 
             const response = await axios.post(
-                'http://localhost:3001/api/user/login',
+                'https://api2.tuplrc-cla.com/api/user/login',
                 { username, password },
                 { withCredentials: true } // Include credentials for secure cookie handling
             );

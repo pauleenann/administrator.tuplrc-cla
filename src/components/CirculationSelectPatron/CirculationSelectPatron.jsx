@@ -25,8 +25,8 @@ const CirculationSelectPatron = () => {
       // Determine the URL based on clickedAction
       const url =
         localStorage.getItem('clickedAction') === 'Check Out'
-          ? `http://localhost:3001/api/patron`
-          : `http://localhost:3001/api/patron/checkin`;
+          ? `https://api2.tuplrc-cla.com/api/patron`
+          : `https://api2.tuplrc-cla.com/api/patron/checkin`;
 
       const response = await axios.get(url);
       const sortedPatrons = response.data.sort(

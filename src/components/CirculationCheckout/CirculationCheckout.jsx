@@ -27,7 +27,7 @@ const CirculationCheckout = () => {
 
   const getPatron = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/patron/checkout`, {
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/patron/checkout`, {
         params: { id },
       });
       setPatron(response.data); // Update patron state with response data
@@ -41,7 +41,7 @@ const CirculationCheckout = () => {
   const getUsername = async()=>{
     try {
       // Request server to verify the JWT token
-      const response = await axios.get(`http://localhost:3001/api/user/check-session`, { withCredentials: true });
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/user/check-session`, { withCredentials: true });
       console.log(response.data)
       // If session is valid, set the role
       if (response.data.loggedIn) {
@@ -87,7 +87,7 @@ const CirculationCheckout = () => {
       const checkinPromises = selectedItems.map(async (item) => {
         try {
           // Get checkout record
-          const checkoutResponse = await axios.get(`http://localhost:3001/api/circulation/checkout-record`, {
+          const checkoutResponse = await axios.get(`https://api2.tuplrc-cla.com/api/circulation/checkout-record`, {
             params: { resource_id: item.resource_id, patron_id: id },
           });
   
@@ -98,7 +98,7 @@ const CirculationCheckout = () => {
           const checkoutId = checkoutResponse.data.checkout_id;
   
           // Post to checkin endpoint
-          const response = await axios.post(`http://localhost:3001/api/circulation/checkin`, {
+          const response = await axios.post(`https://api2.tuplrc-cla.com/api/circulation/checkin`, {
             checkout_id: checkoutId,
             returned_date: date,
             patron_id: id,
@@ -170,7 +170,7 @@ const CirculationCheckout = () => {
     try {
       // Create an array of promises to insert all items
       const checkoutPromises = selectedItems.map((item) => {
-        return axios.post(`http://localhost:3001/api/circulation/checkout`, {
+        return axios.post(`https://api2.tuplrc-cla.com/api/circulation/checkout`, {
           checkout_date: date,
           checkout_due: dueDate,
           resource_id: item.resource_id,

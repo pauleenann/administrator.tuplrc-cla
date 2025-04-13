@@ -71,7 +71,7 @@ const Accounts = () => {
   const getUsername = async()=>{
     try {
       // Request server to verify the JWT token
-      const response = await axios.get(`http://localhost:3001/api/user/check-session`, { withCredentials: true });
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/user/check-session`, { withCredentials: true });
       console.log(response.data)
       // If session is valid, set the role
       if (response.data.loggedIn) {
@@ -100,7 +100,7 @@ const Accounts = () => {
 
 
     try {
-      const response = await axios.get('http://localhost:3001/api/account', {
+      const response = await axios.get('https://api2.tuplrc-cla.com/api/account', {
         params: {
           limit: pagination,
           offset,
@@ -132,7 +132,7 @@ const Accounts = () => {
     if (Object.keys(error).length === 0) {
       setLoading(true);
       try {
-        const response = await axios.post('http://localhost:3001/api/account', account);
+        const response = await axios.post('https://api2.tuplrc-cla.com/api/account', account);
         console.log(account)
         setLoading(false);
 
@@ -155,7 +155,7 @@ const Accounts = () => {
   // Get account to be edited
   const getToEdit = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/account/${id}`);
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/account/${id}`);
       setToEditAccount({
         id: response.data[0].staff_id,
         fname: response.data[0].staff_fname,
@@ -191,7 +191,7 @@ const Accounts = () => {
       try {
         console.log('Editing account with id: ', id);
         appendToEditAccount('username', staffUname);
-        const response = await axios.put(`http://localhost:3001/api/account/${id}`, toEditAccount);
+        const response = await axios.put(`https://api2.tuplrc-cla.com/api/account/${id}`, toEditAccount);
         const result2 = await Swal.fire({
           title: "Edited!",
           text: `You edited the user successfully.`,
@@ -227,7 +227,7 @@ const Accounts = () => {
     setLoading(true);
     try {
       console.log('account: ', staffUname)
-      const response = await axios.put(`http://localhost:3001/api/account/deactivate/${id}`, {staffUname});
+      const response = await axios.put(`https://api2.tuplrc-cla.com/api/account/deactivate/${id}`, {staffUname});
       const result2 = await Swal.fire({
         title: "Deactivated!",
         text: `${uname} deactivated successfully.`,
@@ -261,7 +261,7 @@ const Accounts = () => {
 
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3001/api/account/activate/${id}`, {staffUname});
+      const response = await axios.put(`https://api2.tuplrc-cla.com/api/account/activate/${id}`, {staffUname});
       const result2 = await Swal.fire({
         title: "Activated!",
         text: `${uname} activated successfully.`,

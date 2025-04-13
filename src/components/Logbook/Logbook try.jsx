@@ -49,7 +49,7 @@ const Logbook = () => {
                 page: currentPage, // Include current page in the request
             };
             const query = new URLSearchParams(params).toString();
-            const response = await axios.get(`http://localhost:3001/api/patron/sort?${query}`);
+            const response = await axios.get(`https://api2.tuplrc-cla.com/api/patron/sort?${query}`);
             setPatron(response.data.results); // Expect results array in response
             setTotalEntries(response.data.total); // Set total entries for pagination
             
@@ -64,7 +64,7 @@ const Logbook = () => {
         setLoading(true);
         try {
             const today = new Date().toISOString().split('T')[0]; // Get today's date
-            const response = await axios.get(`http://localhost:3001/api/patron/sort?startDate=${today}&endDate=${today}&limit=${entriesPerPage}&page=${currentPage}`);
+            const response = await axios.get(`https://api2.tuplrc-cla.com/api/patron/sort?startDate=${today}&endDate=${today}&limit=${entriesPerPage}&page=${currentPage}`);
             setPatron(response.data.results);
             setTotalEntries(response.data.total);
         } catch (err) {

@@ -34,7 +34,7 @@ const ReportView = ({open, close, id}) => {
   
   const getReport = async() => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/reports/view/${id}`);
+        const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/view/${id}`);
         console.log(response.data);
         
         // Convert dates to local timezone in the report data
@@ -60,7 +60,7 @@ const ReportView = ({open, close, id}) => {
 
   const fetchExcel = async () => {
     try {
-        const response = await axios.get(`http://localhost:3001/api/reports/fetch-excel?filePath=${encodeURIComponent(report[0].filepath)}`, {
+        const response = await axios.get(`https://api2.tuplrc-cla.com/api/reports/fetch-excel?filePath=${encodeURIComponent(report[0].filepath)}`, {
             responseType: 'arraybuffer', // Retrieve as binary data
         });
 

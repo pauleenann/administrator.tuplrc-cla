@@ -144,7 +144,7 @@ const Catalog = () => {
         // Use keyword as is, or convert empty string to '%%' for backend wildcard search
         const searchKeyword = keyword === '' ? '%%' : keyword;
            
-        const response = await axios.get(`http://localhost:3001/api/catalog`, {
+        const response = await axios.get(`https://api2.tuplrc-cla.com/api/catalog`, {
           params: {
             keyword: searchKeyword,
             type: selectedFilters.type,
@@ -296,7 +296,7 @@ const Catalog = () => {
         Object.entries(resource).forEach(([key, value]) => {
           formData.append(key, value);
         })
-        const response = await axios.post('http://localhost:3001/api/resources', formData);
+        const response = await axios.post('https://api2.tuplrc-cla.com/api/resources', formData);
         if (response.data.status === 409) {
           duplicated.push(resource.title)
           continue; // Skip the resource if there's a conflict
@@ -407,7 +407,7 @@ const Catalog = () => {
     if (!result.isConfirmed) return; // Exit if user cancels
 
     try {
-      await axios.post(`http://localhost:3001/api/catalog`,{id,resourceState,username});
+      await axios.post(`https://api2.tuplrc-cla.com/api/catalog`,{id,resourceState,username});
       // Show toast first
       window.toast.fire({ 
         icon: "success", 

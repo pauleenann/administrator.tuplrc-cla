@@ -6,7 +6,7 @@ export const fetchDepartmentOnline = createAsyncThunk(
     "data/fetchDepartmentOnline",
     async()=>{
         try {
-            const response = await axios.get(`http://localhost:3001/api/data/departments`);
+            const response = await axios.get(`https://api2.tuplrc-cla.com/api/data/departments`);
             return response.data
         } catch (error) {
             console.error("Error fetching departments:", error);

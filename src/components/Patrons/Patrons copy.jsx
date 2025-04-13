@@ -21,7 +21,7 @@ const Patrons = () => {
     useEffect(() => {
         const fetchUserRole = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/user/check-session', { withCredentials: true });
+                const response = await axios.get('https://api2.tuplrc-cla.com/api/user/check-session', { withCredentials: true });
                 if (response.data.loggedIn) {
                     setUserRole(response.data.userRole);
                 } else {
@@ -45,7 +45,7 @@ const Patrons = () => {
 
     const getPatron = async () => {
         setLoading(true);
-        axios.get('http://localhost:3001/api/patron')
+        axios.get('https://api2.tuplrc-cla.com/api/patron')
             .then((response) => {
                 setPatrons(response.data);
                 setFilteredPatrons(response.data);

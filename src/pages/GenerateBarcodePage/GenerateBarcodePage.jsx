@@ -23,7 +23,7 @@ const GenerateBarcodePage = () => {
     
     const getData = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/catalog/generate-barcode');
+            const response = await axios.get('https://api2.tuplrc-cla.com/api/catalog/generate-barcode');
             setDataToGenerate(response.data);
             setFilteredData(response.data)
         } catch (error) {

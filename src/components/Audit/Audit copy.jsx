@@ -33,7 +33,7 @@ const Audit = () => {
   const getAudit = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:3001/api/audit");
+      const response = await axios.get("https://api2.tuplrc-cla.com/api/audit");
       const updatedAudit = response.data.map((item) => ({
         ...item,
         formatted_timestamp: formatTimestamp(item.action_timestamp),

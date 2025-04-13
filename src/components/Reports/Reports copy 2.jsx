@@ -53,7 +53,7 @@ const Reports = () => {
         kind: selectedType.kind,
         ...(selectedType.kind === 'Custom Date' && { startDate: customDate.startDate, endDate: customDate.endDate }),
       };
-      const response = await axios.get('http://localhost:3001/api/reports', { params });
+      const response = await axios.get('https://api2.tuplrc-cla.com/api/reports', { params });
       if(response.data.length!=0){
         setIsNoData(false)
         setGeneratedReport(response.data);

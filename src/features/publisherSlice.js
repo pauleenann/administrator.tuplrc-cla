@@ -8,7 +8,7 @@ export const fetchPublisherOnline = createAsyncThunk(
         try {
             const pubs = [];
 
-            const response = await axios.get(`http://localhost:3001/api/data/publishers`);
+            const response = await axios.get(`https://api2.tuplrc-cla.com/api/data/publishers`);
 
             response.data.forEach(item => {
                 pubs.push({

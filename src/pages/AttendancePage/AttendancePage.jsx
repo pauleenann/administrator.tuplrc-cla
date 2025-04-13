@@ -80,7 +80,7 @@ const AttendancePage = () => {
       const { date, time } = getCurrentDateTime();
       
       const response = await axios.post(
-        "http://localhost:3001/api/attendance", 
+        "https://api2.tuplrc-cla.com/api/attendance", 
         { studentId, date, time }, 
         { headers: { "Content-Type": "application/json" }}
       );

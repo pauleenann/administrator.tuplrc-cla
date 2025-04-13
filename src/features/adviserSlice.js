@@ -8,7 +8,7 @@ export const fetchAdviserOnline = createAsyncThunk(
         try {
             const adv = [];
 
-            const response = await axios.get('http://localhost:3001/api/data/advisers');
+            const response = await axios.get('https://api2.tuplrc-cla.com/api/data/advisers');
 
             response.data.forEach(item => {
                 adv.push({
