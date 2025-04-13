@@ -10,16 +10,16 @@ const AttendancePage = () => {
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [lastScannedId, setLastScannedId] = useState(null);
   const [lastScanTime, setLastScanTime] = useState(null);
-
+  
   // Create a ref for the input and set focus
   const searchInputRef = useRef(null);
-
+  
   // Get current date and time in Philippines timezone
   const getCurrentDateTime = () => {
     const options = { timeZone: "Asia/Manila" };
     return {
       date: new Date().toLocaleDateString("en-CA", options),
-      time: new Date().toLocaleTimeString("en-GB", options),
+      time: new Date().toLocaleTimeString("en-GB", options)
     };
   };
 
@@ -45,7 +45,7 @@ const AttendancePage = () => {
       const timeout = setTimeout(() => {
         setMessage("");
         setStatus("idle");
-        setStudentName("");
+        setStudentName('')
       }, 5000);
       return () => clearTimeout(timeout);
     }
@@ -58,19 +58,13 @@ const AttendancePage = () => {
       setStatus("error");
       return;
     }
-
+    
     const currentTime = Date.now();
     const DEBOUNCE_TIME = 5000; // 5 seconds
 
     // Prevent rapid scanning of the same ID
-    if (
-      lastScannedId === studentId &&
-      lastScanTime &&
-      currentTime - lastScanTime < DEBOUNCE_TIME
-    ) {
-      setMessage(
-        "This student ID was scanned recently. Please wait a few seconds."
-      );
+    if (lastScannedId === studentId && lastScanTime && currentTime - lastScanTime < DEBOUNCE_TIME) {
+      setMessage("This student ID was scanned recently. Please wait a few seconds.");
       setStatus("error");
       setStudentId("");
       return;
@@ -79,18 +73,18 @@ const AttendancePage = () => {
     // Update the last scanned ID and time
     setLastScannedId(studentId);
     setLastScanTime(currentTime);
-
+    
     setStatus("loading");
 
     try {
       const { date, time } = getCurrentDateTime();
-
+      
       const response = await axios.post(
-        "https://api2.tuplrc-cla.com/api/attendance",
-        { studentId, date, time },
-        { headers: { "Content-Type": "application/json" } }
+        "https://api2.tuplrc-cla.com/api/attendance", 
+        { studentId, date, time }, 
+        { headers: { "Content-Type": "application/json" }}
       );
-
+      
       if (response.data.success) {
         setStudentName(response.data.studentName);
         setMessage("Attendance logged successfully.");
@@ -133,11 +127,11 @@ const AttendancePage = () => {
           </div>
         </div>
       </header>
-
+      
       <main className="content">
         <div className="attendance-card">
           <h2 className="card-title">Student Attendance</h2>
-
+          
           {studentName ? (
             <div className="student-info success-panel">
               <div className="welcome-icon">✓</div>
@@ -161,27 +155,21 @@ const AttendancePage = () => {
               onChange={(e) => setStudentId(e.target.value)}
               ref={searchInputRef}
               placeholder="Student ID"
-              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+              onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
               disabled={status === "loading"}
             />
-            <button
-              onClick={handleSubmit}
-              className={`search-button ${
-                status === "loading" ? "loading" : ""
-              }`}
+            <button 
+              onClick={handleSubmit} 
+              className={`search-button ${status === "loading" ? "loading" : ""}`}
               aria-label="Search for student"
               disabled={status === "loading"}
             >
               {status === "loading" ? "Processing..." : "Submit"}
             </button>
           </div>
-
+          
           {message && (
-            <div
-              className={`message ${
-                status === "success" ? "success" : "error"
-              }`}
-            >
+            <div className={`message ${status === "success" ? "success" : "error"}`}>
               <p className="status-message">{message}</p>
             </div>
           )}
@@ -189,9 +177,7 @@ const AttendancePage = () => {
       </main>
 
       <footer className="footer">
-        <p>
-          &copy; TUP CLA Learning Resource Center {new Date().getFullYear()}
-        </p>
+        <p>&copy; TUP CLA Learning Resource Center {new Date().getFullYear()}</p>
       </footer>
     </div>
   );

@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./Circulation.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartPlus,
-  faCartShopping,
-  faSearch,
-  faArrowLeft,
-  faArrowRight,
-  faExclamationCircle,
-  faCalendarAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Circulation.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faCartShopping, faSearch, faArrowLeft, faArrowRight, faExclamationCircle, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Circulation = () => {
   const location = useLocation();
@@ -19,21 +11,21 @@ const Circulation = () => {
 
   const [borrowers, setBorrowers] = useState([]);
   const [filteredBorrowers, setFilteredBorrowers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [query, setQuery] = useState("any");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [query, setQuery] = useState('any');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const itemsPerPage = 5;
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search).get("filter");
-    setQuery(params || "any");
+    const params = new URLSearchParams(location.search).get('filter');
+    setQuery(params || 'any');
     getBorrowers();
-    localStorage.removeItem("clickedAction");
-    localStorage.removeItem("selectedItems");
+    localStorage.removeItem('clickedAction');
+    localStorage.removeItem('selectedItems');
   }, [location.search]);
 
   useEffect(() => {
@@ -42,26 +34,17 @@ const Circulation = () => {
 
   useEffect(() => {
     search();
-  }, [startDate, endDate]);
-
-  useEffect(() => {
-    if (searchTerm == "") {
-      search();
-    }
-  }, [searchTerm]);
+  }, [searchTerm, startDate, endDate]);
 
   const getBorrowers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api2.tuplrc-cla.com/api/patron/borrowers`,
-        {
-          params: { page: currentPage, limit: itemsPerPage, query: query },
-        }
-      );
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/patron/borrowers`, {
+        params: { page: currentPage, limit: itemsPerPage, query: query },
+      });
 
       setBorrowers(response.data.data);
-      console.log(response.data.data);
+      console.log(response.data.data)
       setFilteredBorrowers(response.data.data);
       setTotalPages(Math.ceil(response.data.totalCount / itemsPerPage));
     } catch (err) {
@@ -72,32 +55,21 @@ const Circulation = () => {
   };
 
   const search = () => {
-    if (!borrowers || !Array.isArray(borrowers) || borrowers.length === 0)
-      return;
+    if (!borrowers || !Array.isArray(borrowers) || borrowers.length === 0) return;
 
     const filtered = borrowers.filter((borrower) => {
       // Only search non-date columns
-      const matchesSearch =
+      const matchesSearch = 
         // TUP ID column
-        (borrower.tup_id?.toLowerCase() ?? "").includes(
-          searchTerm.toLowerCase()
-        ) ||
+        (borrower.tup_id?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
         // Name column
-        `${borrower.patron_fname ?? ""} ${borrower.patron_lname ?? ""}`
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
+        `${borrower.patron_fname ?? ''} ${borrower.patron_lname ?? ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
         // Book/s issued column
-        (borrower.borrowed_book?.toLowerCase() ?? "").includes(
-          searchTerm.toLowerCase()
-        ) ||
+        (borrower.borrowed_book?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
         // Course column
-        (borrower.course?.toLowerCase() ?? "").includes(
-          searchTerm.toLowerCase()
-        ) ||
+        (borrower.course?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
         // Status column
-        (borrower.status?.toLowerCase() ?? "").includes(
-          searchTerm.toLowerCase()
-        );
+        (borrower.status?.toLowerCase() ?? '').includes(searchTerm.toLowerCase());
 
       // Date range filtering using the approach from the first code
       const isDateInRange = (date) => {
@@ -105,19 +77,19 @@ const Circulation = () => {
         const parsedDate = new Date(date);
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
-
+        
         // Set the time to midnight for proper date comparison
         if (start) start.setHours(0, 0, 0, 0);
         if (end) end.setHours(23, 59, 59, 999);
         parsedDate.setHours(12, 0, 0, 0);
-
+        
         return (!start || parsedDate >= start) && (!end || parsedDate <= end);
       };
 
       // Check if any of the date fields match the date range
-      const dateMatches =
-        isDateInRange(borrower.checkout_date) ||
-        isDateInRange(borrower.checkout_due) ||
+      const dateMatches = 
+        isDateInRange(borrower.checkout_date) || 
+        isDateInRange(borrower.checkout_due) || 
         isDateInRange(borrower.checkin_date);
 
       // If both search term and dates are provided, both should match
@@ -138,7 +110,7 @@ const Circulation = () => {
   };
 
   const handleActionClick = (action) => {
-    localStorage.setItem("clickedAction", action);
+    localStorage.setItem('clickedAction', action);
   };
 
   const handleSearch = (e) => {
@@ -152,11 +124,11 @@ const Circulation = () => {
   };
 
   const clearFilter = () => {
-    setQuery("any"); // Reset query filter
-    setSearchTerm(""); // Clear search term
+    setQuery('any'); // Reset query filter
+    setSearchTerm(''); // Clear search term
     setCurrentPage(1); // Reset pagination to first page
-    setStartDate("");
-    setEndDate("");
+    setStartDate('');
+    setEndDate('');
     getBorrowers(); // Refetch the borrower data
   };
 
@@ -167,19 +139,13 @@ const Circulation = () => {
       {/* Check-in buttons */}
       <div className="buttons">
         <Link to="/circulation/patron">
-          <button
-            className="btn checkin-btn"
-            onClick={() => handleActionClick("Check Out")}
-          >
+          <button className="btn checkin-btn" onClick={() => handleActionClick('Check Out')}>
             <FontAwesomeIcon icon={faCartShopping} className="fs-1" />
             <span>Borrow</span>
           </button>
         </Link>
         <Link to="/circulation/patron">
-          <button
-            className="btn checkin-btn"
-            onClick={() => handleActionClick("Check In")}
-          >
+          <button className="btn checkin-btn" onClick={() => handleActionClick('Check In')}>
             <FontAwesomeIcon icon={faCartPlus} className="fs-1" />
             <span>Return</span>
           </button>
@@ -195,23 +161,20 @@ const Circulation = () => {
             placeholder="Search by ID, name, book, or course"
             value={searchTerm}
             onChange={handleSearch}
-            onKeyDown={(e) => e.key === "Enter" && search()}
+            onKeyDown={(e) => e.key === 'Enter' && search()}
           />
           <button className="btn search-btn" onClick={search}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <select
-          className="form-select dropdown"
-          onChange={(e) => setQuery(e.target.value)}
-        >
+        <select className="form-select dropdown" onChange={(e) => setQuery(e.target.value)}>
           <option value="any">Any</option>
           <option value="borrowed">Borrowed</option>
           <option value="returned">Returned</option>
           <option value="overdue">Overdue</option>
         </select>
       </div>
-
+      
       {/* Date Range Row */}
       <div className="date-filter d-flex align-items-center flex-wrap w-50">
         <div className="d-flex align-items-center flex-grow-1 gap-2">
@@ -239,8 +202,8 @@ const Circulation = () => {
             />
           </div>
         </div>
-        <button
-          className="btn btn-warning ms-2 d-flex align-items-center"
+        <button 
+          className="btn btn-warning ms-2 d-flex align-items-center" 
           onClick={clearFilter}
         >
           {/* <FontAwesomeIcon icon={faTimes} className="me-2" /> */}
@@ -267,51 +230,34 @@ const Circulation = () => {
           <tbody>
             {filteredBorrowers.length > 0 ? (
               filteredBorrowers.map((borrower, index) => (
-                <tr key={index}>
-                  <td className="col">{borrower.tup_id}</td>
-                  <td className="col">
+                <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
+                  <td style={{ padding: '10px' }} className='col'>{borrower.tup_id}</td>
+                  <td style={{ padding: '10px' }} className='col'>
                     {borrower.patron_fname} {borrower.patron_lname}
                   </td>
-                  <td
-                    onClick={() =>
-                      navigate(`/catalog/view/${borrower.resource_id}`)
-                    }
-                    className="resource col-2"
-                  >
+                  <td style={{ padding: '10px' }} onClick={() => navigate(`/catalog/view/${borrower.resource_id}`)} className="resource col-2">
                     {borrower.borrowed_book}
                   </td>
-                  <td className="col-3">{borrower.authors}</td>
-                  <td className="col">
-                    {borrower.checkout_date
-                      ? new Date(borrower.checkout_date).toLocaleDateString(
-                          "en-CA"
-                        )
-                      : "N/A"}
+                  <td style={{ padding: '10px' }} className='col-3'>{borrower.authors}</td>
+                  <td style={{ padding: '10px' }} className='col'>
+                    {borrower.checkout_date ? new Date(borrower.checkout_date).toLocaleDateString('en-CA') : 'N/A'}
                   </td>
-                  <td className="col">
-                    {borrower.checkout_due
-                      ? new Date(borrower.checkout_due).toLocaleDateString(
-                          "en-CA"
-                        )
-                      : "N/A"}
+                  <td style={{ padding: '10px' }} className='col'>
+                    {borrower.checkout_due ? new Date(borrower.checkout_due).toLocaleDateString('en-CA') : 'N/A'}
                   </td>
-                  <td className="col">
+                  <td style={{ padding: '10px' }} className='col'>
                     {borrower.checkin_date
-                      ? new Date(borrower.checkin_date).toLocaleDateString(
-                          "en-CA"
-                        )
-                      : "Not Yet Returned"}
+                      ? new Date(borrower.checkin_date).toLocaleDateString('en-CA')
+                      : 'Not Yet Returned'}
                   </td>
-                  <td className="col">
+                  <td style={{ padding: '10px' }} className='col'>
                     <span
                       className={` text-light p-2 rounded fw-semibold
-                        ${
-                          borrower.status === "overdue"
-                            ? "bg-danger"
-                            : borrower.status === "returned"
-                            ? "bg-success"
-                            : "bg-primary"
-                        }
+                        ${borrower.status === 'overdue'
+                          ? 'bg-danger'
+                          : borrower.status === 'returned'
+                          ? 'bg-success'
+                          : 'bg-primary'}
                       `}
                     >
                       {borrower.status}
@@ -321,10 +267,7 @@ const Circulation = () => {
               ))
             ) : loading ? (
               <tr>
-                <td
-                  colSpan="8"
-                  style={{ textAlign: "center", padding: "20px" }}
-                >
+                <td colSpan="8" style={{ textAlign: 'center', padding: '20px' }}>
                   <div className="spinner-box">
                     <div className="spinner-grow text-danger" role="status">
                       <span className="sr-only">Loading...</span>
@@ -336,20 +279,10 @@ const Circulation = () => {
               <tr>
                 <td colSpan="8" className="no-data-box text-center">
                   <div className="d-flex flex-column align-items-center my-5">
-                    <FontAwesomeIcon
-                      icon={faExclamationCircle}
-                      className="fs-2 no-data"
-                    />
-                    <span className="fw-semibold mt-2 m-0">
-                      No records found.
-                    </span>
-                    <span className="m-0">Please try a different search.</span>
-                    <button
-                      className="btn btn-warning mt-2"
-                      onClick={clearFilter}
-                    >
-                      Clear filter
-                    </button>
+                    <FontAwesomeIcon icon={faExclamationCircle} className="fs-2 no-data" />
+                    <span className='fw-semibold mt-2 m-0'>No records found.</span>
+                    <span className='m-0'>Please try a different search.</span>
+                    <button className='btn btn-warning mt-2' onClick={clearFilter}>Clear filter</button>
                   </div>
                 </td>
               </tr>
@@ -359,9 +292,7 @@ const Circulation = () => {
       </div>
 
       <div className="pagination">
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
+        <span>Page {currentPage} of {totalPages}</span>
         <div className="buttons">
           <button
             className="btn"

@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         borderStyle: "solid", 
         borderWidth: 1, 
         borderColor: COLORS.border,
+        borderRadius: 5 
     },
     tableRow: { 
         flexDirection: "row", 
@@ -59,6 +60,8 @@ const styles = StyleSheet.create({
         width: "50%", 
         padding: 8, 
         textAlign: "center",
+        borderRightWidth: 1,
+        borderRightColor: "rgba(255,255,255,0.2)"
     },
     tableCol: { 
         width: "50%", 

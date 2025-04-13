@@ -1,39 +1,32 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./CirculationSelectItem.css";
-import { useNavigate, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBarcode,
-  faTrashCan,
-  faX,
-  faArrowRight,
-  faExclamationCircle,
-  faQrcode,
-} from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import React, { useState, useEffect, useRef } from 'react';
+import './CirculationSelectItem.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBarcode, faTrashCan, faX, faArrowRight, faExclamationCircle, faQrcode } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const CirculationSelectItem = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItems, setSelectedItems] = useState(() => {
-    const savedItems = localStorage.getItem("selectedItems");
+    const savedItems = localStorage.getItem('selectedItems');
     return savedItems ? JSON.parse(savedItems) : [];
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const actionSelected = localStorage.getItem("clickedAction") || "Check Out";
-  const actionLabel = actionSelected === "Check In" ? "Check In" : "Check Out";
+  
+  const actionSelected = localStorage.getItem('clickedAction') || 'Check Out';
+  const actionLabel = actionSelected === 'Check In' ? 'Check In' : 'Check Out';
   const isDisabled = selectedItems.length === 0 || selectedItems.length > 1;
   const searchInputRef = useRef(null);
 
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(null)
 
   // Save selected items to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
   }, [selectedItems]);
 
   useEffect(() => {
@@ -59,24 +52,20 @@ const CirculationSelectItem = () => {
 
     setIsLoading(true);
     setError(null);
-
-    const endpoint =
-      actionSelected === "Check In" ? "/checkin/search" : "/checkout/search";
+    
+    const endpoint = actionSelected === 'Check In' ? '/checkin/search' : '/checkout/search';
 
     try {
-      const response = await axios.get(
-        `https://api2.tuplrc-cla.com/api/circulation${endpoint}`,
-        {
-          params: {
-            query,
-            ...(actionSelected === "Check In" && { patron_id: id }),
-          },
-        }
-      );
+      const response = await axios.get(`https://api2.tuplrc-cla.com/api/circulation${endpoint}`, {
+        params: {
+          query,
+          ...(actionSelected === 'Check In' && { patron_id: id }),
+        },
+      });
       setSuggestions(response.data);
     } catch (error) {
-      console.error("Error fetching suggestions:", error);
-      setError("Failed to fetch suggestions. Please try again.");
+      console.error('Error fetching suggestions:', error);
+      setError('Failed to fetch suggestions. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -88,13 +77,11 @@ const CirculationSelectItem = () => {
   };
 
   const handleAddItem = (item) => {
-    const exists = selectedItems.find(
-      (i) => i.resource_id === item.resource_id
-    );
+    const exists = selectedItems.find((i) => i.resource_id === item.resource_id);
     if (!exists) {
       setSelectedItems([...selectedItems, item]);
     }
-    setSearchQuery("");
+    setSearchQuery('');
     setSuggestions([]);
     searchInputRef.current?.focus();
   };
@@ -108,19 +95,19 @@ const CirculationSelectItem = () => {
   };
 
   const handleProceed = () => {
-    localStorage.setItem("id", id);
-
+    localStorage.setItem('id', id);
+    
     // Navigate based on the action
-    if (actionSelected === "Check In") {
-      navigate("/circulation/patron/item/checkin");
+    if (actionSelected === 'Check In') {
+      navigate('/circulation/patron/item/checkin');
     } else {
-      navigate("/circulation/patron/item/checkout");
+      navigate('/circulation/patron/item/checkout');
     }
   };
 
   const handleKeyDown = (e) => {
     // Allow adding the first suggestion with Enter key
-    if (e.key === "Enter" && suggestions.length > 0) {
+    if (e.key === 'Enter' && suggestions.length > 0) {
       handleAddItem(suggestions[0]);
     }
   };
@@ -128,46 +115,39 @@ const CirculationSelectItem = () => {
   // Handle cover image preview
   useEffect(() => {
     if (selectedItems.length === 0 || !selectedItems[0].cover) return;
-
+    
     try {
-      if (typeof selectedItems[0].cover === "object") {
+      if (typeof selectedItems[0].cover === 'object') {
         setPreview(URL.createObjectURL(selectedItems[0].cover));
       } else {
         setPreview(`https://api.tuplrc-cla.com/${selectedItems[0].cover}`);
       }
     } catch (error) {
-      console.error("Error creating preview URL:", error);
+      console.error('Error creating preview URL:', error);
       setPreview(null);
     }
   }, [selectedItems]);
 
   return (
-    <div className="circ-select-item-container bg-light">
+    <div className='circ-select-item-container bg-light'>
       <h1>Book Circulation</h1>
 
       {/* Path and back */}
       <div className="back-path">
-        <button onClick={() => navigate(-1)} className="btn">
-          Back
-        </button>
-        <p>
-          Book Circulation / Select patron / <span>Select item</span>
-        </p>
+        <button onClick={() => navigate(-1)} className="btn">Back</button>
+        <p>Book Circulation / Select patron / <span>Select item</span></p>
       </div>
 
       <div className="row add-items">
         {/* Scan or manual */}
         <div className="col scan-manual shadow-sm">
           <div className="barcode">
-            <FontAwesomeIcon icon={faBarcode} className="barcode-icon" />
-            <p>
-              Scan items in the scanner <br />
-              to be {actionLabel.toLowerCase()}.
-            </p>
+            <FontAwesomeIcon icon={faBarcode} className='barcode-icon' />
+            <p>Scan items in the scanner <br />to be {actionLabel.toLowerCase()}.</p>
           </div>
           <p>No barcode available? Input manually instead</p>
 
-          <div className="circ-info">
+          <div className='circ-info'>
             <label htmlFor="item-search">ISBN / Title</label>
             <input
               id="item-search"
@@ -182,7 +162,7 @@ const CirculationSelectItem = () => {
           </div>
 
           {isLoading && <div className="loading">Loading suggestions...</div>}
-
+          
           {error && <div className="error-message">{error}</div>}
 
           {suggestions.length > 0 && (
@@ -194,11 +174,9 @@ const CirculationSelectItem = () => {
                   onClick={() => handleAddItem(item)}
                   role="option"
                   tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && handleAddItem(item)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleAddItem(item)}
                 >
-                  <span>
-                    {item.resource_title} (ISBN: {item.book_isbn})
-                  </span>
+                  <span>{item.resource_title} (ISBN: {item.book_isbn})</span>
                 </div>
               ))}
             </div>
@@ -207,13 +185,11 @@ const CirculationSelectItem = () => {
 
         {/* Items added */}
         <div className="col summary shadow-sm">
-          <div className="selected-items">
+          <div className='selected-items'>
             <div className="header">
-              <h5>
-                Items added (<span>{selectedItems.length}</span>)
-              </h5>
-              <button
-                className="btn"
+              <h5>Items added (<span>{selectedItems.length}</span>)</h5>
+              <button 
+                className="btn" 
                 onClick={handleClearItems}
                 disabled={selectedItems.length === 0}
               >
@@ -222,64 +198,45 @@ const CirculationSelectItem = () => {
               </button>
             </div>
 
-            <div className="items-list">
+            <div className='items-list'>
               {selectedItems.length === 0 ? (
                 <div className="no-items d-flex flex-column align-items-center justify-content-center gap-2 mt-4">
-                  <FontAwesomeIcon
-                    icon={faExclamationCircle}
-                    className="fs-2 no-data"
-                  />
+                  <FontAwesomeIcon icon={faExclamationCircle} className="fs-2 no-data" />
                   <span>No items selected.</span>
                 </div>
               ) : (
                 selectedItems.map((item) => (
-                  <div
-                    className="item rounded p-3 row mt-2 position-relative"
-                    key={item.resource_id}
-                  >
+                  <div className="item rounded p-3 row mt-2 position-relative" key={item.resource_id}>
                     <div className="col-4">
-                      <img
-                        src={preview}
+                      <img 
+                        src={preview} 
                         alt={`Cover of ${item.resource_title}`}
                         className="w-100 h-100 object-fit-cover rounded shadow"
                       />
                     </div>
                     <div className="col">
                       <div className="d-flex justify-content-between align-items-start mb-2">
-                        <p className="m-0 fs-5 fw-semibold">
-                          {item.resource_title}
-                        </p>
-                        <button
-                          className="btn p-0 ms-2"
+                        <p className="m-0 fs-5 fw-semibold">{item.resource_title}</p>
+                        <button 
+                          className="btn p-0 ms-2" 
                           onClick={() => handleRemoveItem(item.resource_id)}
                         >
-                          <FontAwesomeIcon
-                            icon={faTrashCan}
-                            aria-label={`Remove ${item.resource_title}`}
-                          />
+                          <FontAwesomeIcon icon={faTrashCan} aria-label={`Remove ${item.resource_title}`} />
                         </button>
                       </div>
-                      <p className="m-0 text-secondary">
-                        ISBN: {item.book_isbn || "Unknown"}
-                      </p>
-                      <p className="m-0 text-secondary">
-                        Author/s: {item.authors || "Unknown"}
-                      </p>
-                      <p className="m-0 text-secondary">
-                        Publisher: {item.publisher || "Unknown"}
-                      </p>
-                      <p className="m-0 text-secondary">
-                        Quantity: <span>1</span>
-                      </p>
+                      <p className="m-0 text-secondary">ISBN: {item.book_isbn || "Unknown"}</p>
+                      <p className="m-0 text-secondary">Author/s: {item.authors || "Unknown"}</p>
+                      <p className="m-0 text-secondary">Publisher: {item.publisher || "Unknown"}</p>
+                      <p className="m-0 text-secondary">Quantity: <span>1</span></p>
                     </div>
-                  </div>
+                  </div> 
                 ))
               )}
             </div>
           </div>
 
-          <div className="checkout">
-            <button
+          <div className='checkout'>
+            <button 
               disabled={isDisabled}
               className="btn checkout-btn"
               onClick={handleProceed}
